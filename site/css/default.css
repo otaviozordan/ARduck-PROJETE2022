@@ -3249,9 +3249,9 @@ input[type="button"].btn-block {
       color: #1de9b6; }
 
 .navbar-dark .navbar-brand {
-  color: #ffffff; }
+  color:#1de9b6; }
   .navbar-dark .navbar-brand:hover, .navbar-dark .navbar-brand:focus {
-    color: #ffffff; }
+    color:#1de9b6;}
 
 .navbar-dark .navbar-nav .nav-link {
   color: rgba(255, 255, 255, 0.7); }
@@ -7460,7 +7460,7 @@ body {
 .navbar .navbar-brand {
   font-size: 1.5rem;
   font-weight: 900;
-  color: #1de9b6;
+  color: #FFFF00;
   text-transform: uppercase; }
 
 .navbar .navbar-nav .nav-item {
