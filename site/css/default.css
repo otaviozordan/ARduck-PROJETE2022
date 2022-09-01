@@ -1973,7 +1973,7 @@ fieldset:disabled a.btn {
         background-color: #000922fd;
         color: rgb(255, 255, 255);
         text-decoration: none;
-        padding: 20px 50px;
+        padding: 20px 30px;
         border: 5px solid #1bb826;
         border-radius: 10px;
       } 
@@ -3304,8 +3304,9 @@ input[type="button"].btn-block {
 
 .card-body {
   -ms-flex: 1 1 auto;
-      flex: 1 1 auto;
-  padding: 1.25rem; }
+    flex: 1 1 auto;
+    padding: 1.25rem;
+  }
 
 .card-title {
   margin-bottom: 0.75rem; }
@@ -7838,3 +7839,18 @@ footer h5 {
 @media screen and (max-width: 768px) {
   .switcher-wrap {
     display: none; } }
+
+.btn-red {
+    display: inline-block;
+    background-color: #263238;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    padding: 20px 30px;
+    border: 5px solid #ff0000;
+    border-radius: 10px;
+} 
+
+.btn-red:hover {
+  animation: pulsate 1s ease-out;
+  color: #850c23;
+}     
