@@ -3,7 +3,7 @@
 ![GitHub repo size](https://img.shields.io/github/repo-size/otaviozordan/ARduck-PROJETE2022?style=for-the-badge)
 ![GitHub language count](https://img.shields.io/github/languages/count/otaviozordan/ARduck-PROJETE2022?style=for-the-badge)
 ![GitHub forks](https://img.shields.io/github/forks/otaviozordan/ARduck-PROJETE2022?style=for-the-badge)
-![Bitbucket open issues](https://img.shields.io/github/contributors/otaviozordan/ARduck-PROJETE2022?color=green&style=flat-square)
+![Bitbucket open issues](https://img.shields.io/github/contributors/otaviozordan/ARduck-PROJETE2022?color=green&style=for-the-badge)
 <img src="https://img.shields.io/github/issues-pr/otaviozordan/ARduck-PROJETE2022?style=for-the-badge"/>
 
 > Repositorio destinado a comportar nossa projeto para a ProjETE22.
