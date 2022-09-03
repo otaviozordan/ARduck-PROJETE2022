@@ -7842,11 +7842,11 @@ footer h5 {
 
 .btn-red {
     display: inline-block;
-    background-color: #263238;
-    color: rgb(255, 255, 255);
+    background-color: none;
+    color: #ffffff;
     text-decoration: none;
     padding: 20px 30px;
-    border: 5px solid #ff0000;
+    border: 5px solid rgb(95, 0, 160);
     border-radius: 10px;
 } 
 
@@ -7854,3 +7854,9 @@ footer h5 {
   animation: pulsate 1s ease-out;
   color: #850c23;
 }     
+
+.colorgreen {
+  color: yellowgreen;
+  margin-bottom: 16rem;
+  margin-top: 2rem; 
+}
