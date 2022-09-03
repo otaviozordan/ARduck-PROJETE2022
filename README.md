@@ -80,7 +80,7 @@ Agradecemos às seguintes pessoas que estão contribuindo para este projeto:
 
 ## 📝 Licença
 
-Esse projeto está sob licença. Veja o arquivo [LICENÇA](https://github.com/otaviozordan/projETE-2022/blob/main/LICENSE) para mais detalhes.
+Esse projeto está sob licença. Veja o arquivo [LICENÇA](https://github.com/otaviozordan/ARduck-PROJETE2022/blob/main/LICENSE) para mais detalhes.
 
 ## 🚀 Como usar o projeto:
 No GitHub esta disposto apenas o código, os esquematicos de montagem estão presentes na pasta [...] 
