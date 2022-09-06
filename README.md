@@ -12,11 +12,11 @@
 
 O projeto ainda está em desenvolvimento e as próximas atualizações serão voltadas nas seguintes tarefas:
 
-- [x] 
+- [42] 
 
 
 ## 💻 Sobre o projeto:
-Estamos **ajustando** os detalhes com a Equipe para podermos dar início no **[Projeto](https://github.com/otaviozordan/ARduck-PROJETE2022)**.
+ARduck é um Kit Didático para ensinar jovens preceitos de eletrônica e instrumentação **[Projeto](https://github.com/otaviozordan/ARduck-PROJETE2022)**.
 
 ## 📫 Diario de Bordo
 > Confira nosso diario!
