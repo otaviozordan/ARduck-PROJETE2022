@@ -1,4 +1,3 @@
-from urllib import response
 from flask import Flask, Response, request
 import json
 
@@ -7,17 +6,18 @@ app = Flask(__name__)
 @app.route("/", methods=["GET"])
 def index():
     response = {}
-    response["Cadastrar valor para tensão"] = "/tensao [POST]"
-    response["Modelo:"] = "{\"tensao\" = \"value\" }"
+    response["Cadastrar valor para tensao"] = "/tensao [POST]"
+    response["Ler valor de tensao"] = "/tensao [GET]"
 
     return Response(json.dumps(response), status=200, mimetype="application/json")
 
 @app.route("/tensao", methods=["POST"])
 def cadastrar_tensao():
-    body = request.get_json()
+    recive = request.get_json()
 
     try:
-        tensao=body["tensao"]
+        global tensao
+        tensao=recive["tensao"]
         
         print("")
         print("Nova tensão cadastrada:", end=" ")
@@ -36,5 +36,12 @@ def cadastrar_tensao():
         response["Mensagem"] = "Erro"
 
         return Response(json.dumps(response), status=400, mimetype="application/json")
+
+@app.route("/tensao", methods=["GET"])
+def ler_tensao():
+    response = {}
+    response["tensao"] = tensao
+
+    return Response(json.dumps(response), status=200, mimetype="application/json")
 
 app.run()
