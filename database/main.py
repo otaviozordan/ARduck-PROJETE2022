@@ -42,6 +42,11 @@ def ler_tensao():
     response = {}
     response["tensao"] = tensao
 
+    print("")
+    print("Servidor fazendo  leitura:", end=" ")
+    print(tensao, end="")
+    print("[mV]")
+
     return Response(json.dumps(response), status=200, mimetype="application/json")
 
 app.run()
