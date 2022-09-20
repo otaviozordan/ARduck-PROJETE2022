@@ -82,7 +82,7 @@ void loop() {
     delay(500);
   }
 
-  if (/*digitalRead(botao)*/true)
+  if (/*digitalRead(botao)*/true) //Teste
   {
     Serial.println("Enviando requisição...");
 
