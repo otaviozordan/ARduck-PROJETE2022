@@ -30,11 +30,11 @@ Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 #include <ESP8266WiFi.h>
 
 //Dados do WiFi
-const char* ssid = "ETE-ALUNOS";
-const char* password = "etefmc890";
+const char* ssid = "Teleco";
+const char* password = "09876543";
 
 //Dados do servidor
-#define SERVER "http://10.10.2.12:5000/tensao"
+#define IP "192.168.210.3"
 
 //Botão Send
 const int botao = 2;
@@ -88,7 +88,7 @@ void loop() {
 
     HTTPClient http; //Inicia cliente HTTP
     WiFiClient client;
-    http.begin(client, SERVER); //Inicia cliente HTTP com o endereço do servidor
+    http.begin(client, ROUTE); //Inicia cliente HTTP com o endereço do servidor
     http.addHeader("Content-Type", "application/json"); //Adiciona cabeçalho ao cliente HTTP
 
     //Prepara payload para envio

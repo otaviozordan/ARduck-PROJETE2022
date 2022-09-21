@@ -8,6 +8,34 @@ def index():
     response = {}
     response["Cadastrar valor para tensao"] = "/tensao [POST]"
     response["Ler valor de tensao"] = "/tensao [GET]"
+    response["Inicia leitura de tensao"] = "/start [GET]"
+    response["Para leitura de tensao"] = "/stop [GET]"
+    response["Estado atual do servidor"] = "/state [GET]"
+
+    return Response(json.dumps(response), status=200, mimetype="application/json")
+
+@app.route("/start", methods=["GET"])
+def start():
+    response = {}
+    response["status"] = "on"
+    global state
+    state = True
+
+    return Response(json.dumps(response), status=200, mimetype="application/json")
+
+@app.route("/stop", methods=["GET"])
+def stop():
+    response = {}
+    response["status"] = "off"
+    global state
+    state = False
+
+    return Response(json.dumps(response), status=200, mimetype="application/json")
+
+@app.route("/state", methods=["GET"])
+def state():
+    response = {}
+    response["status"] = state
 
     return Response(json.dumps(response), status=200, mimetype="application/json")
 
@@ -28,7 +56,6 @@ def cadastrar_tensao():
         response["Valor cadastrado para tensão"] = tensao
 
         return Response(json.dumps(response), status=200, mimetype="application/json")
-
     except Exception as e:
         print('Erro ao enviar')
         
@@ -49,4 +76,4 @@ def ler_tensao():
 
     return Response(json.dumps(response), status=200, mimetype="application/json")
 
-app.run()
+app.run(port=80, debug=False)
