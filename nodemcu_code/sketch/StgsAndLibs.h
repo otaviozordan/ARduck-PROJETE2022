@@ -2,7 +2,6 @@
 // Inicia o display OLED
 // D3 (GPIO ...) -> SDA
 // D5 (GPIO ...) -> SCL
-#include <SPI.h>
 #include <Wire.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
@@ -20,15 +19,22 @@ const char* ssid = "Teleco";
 const char* password = "09876543";
 
 //Dados de rotas
-String IP = "https://  ****************";
+String IP = "https://192.168.210.3";
 String SEND_DATA_rote = IP+="/tensao"; //Rota para envio de dados de tensao
 String STATE_route = IP+="/state"; //Rota para recebimento de dados de estado
-
 
 //Botão Send
 const int botao = 2;
 //Led para indicar que o ESP recebeu uma requisição
 const int led = 2;
+
+//Cliente HTTP e WiFi
+WiFiClient client; //Cria um cliente para conexão com o servidor
+HTTPClient http; //Inicia cliente HTTP
+
+//Biblioteca para trabalho com JSON
+#include <ArduinoJson.h>
+DynamicJsonDocument JSON(1024); //Cria um buffer para armazenar o JSON
 
 void conectarWiFI(){
   //Conecta com o WiFi

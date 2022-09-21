@@ -6,6 +6,7 @@ app = Flask(__name__)
 @app.route("/", methods=["GET"])
 def index():
     response = {}
+    response["Teste de Resquisição"] = "/ [POST]"
     response["Cadastrar valor para tensao"] = "/tensao [POST]"
     response["Ler valor de tensao"] = "/tensao [GET]"
     response["Inicia leitura de tensao"] = "/start [GET]"
@@ -14,12 +15,27 @@ def index():
 
     return Response(json.dumps(response), status=200, mimetype="application/json")
 
+@app.route("/", methods=["POST"])
+def teste_post():
+    recive = request.get_json()
+
+    print("")
+    print("Post Recebido")
+    print(recive)
+    print("")
+
+    return Response(json.dumps(recive), status=200, mimetype="application/json")
+
 @app.route("/start", methods=["GET"])
 def start():
     response = {}
     response["status"] = "on"
     global state
     state = True
+
+    print("")
+    print("Start Server")
+    print("")
 
     return Response(json.dumps(response), status=200, mimetype="application/json")
 
@@ -30,12 +46,23 @@ def stop():
     global state
     state = False
 
+    print("")
+    print("Stop Server")
+    print("")
+
+
     return Response(json.dumps(response), status=200, mimetype="application/json")
 
 @app.route("/state", methods=["GET"])
 def state():
     response = {}
     response["status"] = state
+
+    print("")
+    print("State Server", end=" ")
+    print(state)
+    print("")
+
 
     return Response(json.dumps(response), status=200, mimetype="application/json")
 
@@ -76,4 +103,4 @@ def ler_tensao():
 
     return Response(json.dumps(response), status=200, mimetype="application/json")
 
-app.run(port=80, debug=False)
+app.run(port=80, debug=True)
