@@ -33,8 +33,11 @@ Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 const char* ssid = "Teleco";
 const char* password = "09876543";
 
-//Dados do servidor
-#define IP "192.168.210.3"
+//Dados de rotas
+String IP = "https://  ****************";
+String SEND_DATA_rote = IP+="/tensao"; //Rota para envio de dados de tensao
+String STATE_route = IP+="/state"; //Rota para recebimento de dados de estado
+
 
 //Botão Send
 const int botao = 2;
@@ -76,6 +79,23 @@ void setup() {
 
 void loop() {
 
+  if(true){
+    //Recebe dados do estado
+    delay(1000);
+    HTTPClient http;
+    http.begin(STATE_route);
+    int httpCode = http.GET();
+    Serial.println(httpCode);
+    if(httpCode > 0){
+      String payload = http.getString();
+      Serial.println(payload);
+      if (payload){
+        Serial.println("Medição Iniciada");
+      }
+    }
+    http.end();
+  }
+
   while (WiFi.status() != WL_CONNECTED)
   {
     Serial.println("Sem conexão com a internet");
@@ -84,11 +104,11 @@ void loop() {
 
   if (/*digitalRead(botao)*/true) //Teste
   {
-    Serial.println("Enviando requisição...");
+    Serial.println("Enviando requisição para: "+SEND_DATA_rote);
 
     HTTPClient http; //Inicia cliente HTTP
     WiFiClient client;
-    http.begin(client, ROUTE); //Inicia cliente HTTP com o endereço do servidor
+    http.begin(SEND_DATA_rote); //Inicia cliente HTTP com o endereço do servidor
     http.addHeader("Content-Type", "application/json"); //Adiciona cabeçalho ao cliente HTTP
 
     //Prepara payload para envio
