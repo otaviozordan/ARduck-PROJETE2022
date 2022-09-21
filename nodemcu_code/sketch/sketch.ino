@@ -14,6 +14,8 @@
 
 #include "StgsAndLibs.h"
 
+bool state_server;
+
 void setup()
 {
   // Botão send para enviar a requisição
@@ -46,13 +48,9 @@ void loop()
     {
       String payload = http.getString(); // Recebe resposta do servidor
       Serial.println(payload);           // Exibe resposta do servidor
-      JsonObject& json = jsonBuffer.parseObject(payload); // Cria um objeto JSON
-
-      if (!json.success()) // Verifica se o objeto JSON foi criado com sucesso
-      {
-        Serial.println("Falha ao criar objeto JSON");
-        return;
-      }
+      deserializeJson(doc, payload);
+      JsonObject obj = doc.as<JsonObject>();
+      state_server = obj["status"];
     }
     else
     {
@@ -60,7 +58,7 @@ void loop()
       Serial.println(httpCode);
       return;
     }
-    if(json["state"])
+    if(state_server)
     {
       Serial.println("Enviando requisição para: " + SEND_DATA_rote);
 

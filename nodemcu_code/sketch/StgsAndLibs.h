@@ -19,7 +19,7 @@ const char* ssid = "Teleco";
 const char* password = "09876543";
 
 //Dados de rotas
-String IP = "https://192.168.210.3";
+String IP = "https://192.168.210.3:80";
 String SEND_DATA_rote = IP+="/tensao"; //Rota para envio de dados de tensao
 String STATE_route = IP+="/state"; //Rota para recebimento de dados de estado
 
@@ -34,7 +34,7 @@ HTTPClient http; //Inicia cliente HTTP
 
 //Biblioteca para trabalho com JSON
 #include <ArduinoJson.h>
-DynamicJsonDocument JSON(1024); //Cria um buffer para armazenar o JSON
+DynamicJsonDocument doc(1024); //Cria um buffer para armazenar o JSON
 
 void conectarWiFI(){
   //Conecta com o WiFi
