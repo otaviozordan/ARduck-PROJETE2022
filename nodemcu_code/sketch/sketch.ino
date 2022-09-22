@@ -1,6 +1,6 @@
 /**
  * Scketch.ino - ESP8266 Sketch
- * Author: Otávio Zordan < Github: @otaviozordan > < Linkedin: https://www.linkedin.com/in/otavio-zordan/ >
+ * Author: Otávio Zordan < Github: @otaviozordan > < Linkedin: https://www.linkedin.com/in/otavio-zordan/ > < Instagram: @otaviozordan >
  * License: MIT
  * Date: 2022-07-28
  * Description:
@@ -36,9 +36,11 @@ void loop()
 {
   if (/*digitalRead(botao)*/ true) // Teste
   {
+    
+    Serial.println("Enviando requisição para: " + STATE_route);
     Serial.println("Verificando estado do servidor...");
 
-    http.begin(client, STATE_route);                            // Inicia requisição HTTP
+    http.begin(client, STATE_route);                    // Inicia requisição HTTP
     http.addHeader("Content-Type", "application/json"); // Adiciona cabeçalho
     int httpCode = http.GET();                          // Envia requisição GET
     Serial.print("Status: ");                           // Exibe código de resposta
@@ -47,23 +49,25 @@ void loop()
     if (httpCode > 0)
     {
       String payload = http.getString(); // Recebe resposta do servidor
+      http.end(); // Finaliza requisição
       Serial.println(payload);           // Exibe resposta do servidor
       deserializeJson(doc, payload);
       JsonObject obj = doc.as<JsonObject>();
       state_server = obj["status"];
+      Serial.println("Request realizada com sucesso: " + String(state_server));
+      delay(1000);
     }
     else
     {
-      Serial.println("Erro na requisição");
-      Serial.println(httpCode);
-      return;
+      Serial.print("Erro na requisição");
+      Serial.println("");
+      http.end();
+      delay(1000);
     }
+
     if(state_server)
     {
       Serial.println("Enviando requisição para: " + SEND_DATA_rote);
-
-      http.begin(client, SEND_DATA_rote);                 // Inicia cliente HTTP com o endereço do servidor
-      http.addHeader("Content-Type", "application/json"); // Adiciona cabeçalho ao cliente HTTP
 
       // Prepara payload para envio
       int tensao;
@@ -73,6 +77,9 @@ void loop()
       JSON += tensao;
       JSON += "}";
       Serial.println(JSON);
+
+      http.begin(client, SEND_DATA_rote);                 // Inicia cliente HTTP com o endereço do servidor
+      http.addHeader("Content-Type", "application/json"); // Adiciona cabeçalho ao cliente HTTP
 
       int httpCode = http.POST(JSON); // Envia requisição POST com o payload
 
@@ -85,18 +92,15 @@ void loop()
         Serial.println("Requisição enviada com sucesso");
         Serial.println(payload); // Exibe resposta do servidor
         Serial.println("");      // Pula linha
-
-        digitalWrite(led, 0);
+        http.end();              // Encerra requisição HTTP
+        delay(1000);
       }
       else
       {
         Serial.println("Erro ao enviar requisição");
-        digitalWrite(led, 0);
-        delay(500);
-        digitalWrite(led, 1);
-        return;
+        http.end();
+        delay(1000);
       }
-      http.end();
     }
   }else
   {

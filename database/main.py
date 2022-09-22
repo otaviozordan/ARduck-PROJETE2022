@@ -6,7 +6,7 @@ app = Flask(__name__)
 @app.route("/", methods=["GET"])
 def index():
     response = {}
-    response["Teste de Resquisição"] = "/ [POST]"
+    response["Teste de Resquisicao"] = "/ [POST]"
     response["Cadastrar valor para tensao"] = "/tensao [POST]"
     response["Ler valor de tensao"] = "/tensao [GET]"
     response["Inicia leitura de tensao"] = "/start [GET]"
@@ -62,7 +62,6 @@ def state():
     print("State Server", end=" ")
     print(state)
     print("")
-
 
     return Response(json.dumps(response), status=200, mimetype="application/json")
 

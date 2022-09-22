@@ -19,7 +19,7 @@ const char* ssid = "Teleco";
 const char* password = "09876543";
 
 //Dados de rotas
-String IP = "https://192.168.210.3:80";
+String IP = "https://192.168.210.3";
 String SEND_DATA_rote = IP+="/tensao"; //Rota para envio de dados de tensao
 String STATE_route = IP+="/state"; //Rota para recebimento de dados de estado
 
