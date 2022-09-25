@@ -19,9 +19,9 @@ const char* ssid = "Teleco";
 const char* password = "09876543";
 
 //Dados de rotas
-String IP = "https://192.168.210.3";
-String SEND_DATA_rote = IP+="/tensao"; //Rota para envio de dados de tensao
-String STATE_route = IP+="/state"; //Rota para recebimento de dados de estado
+String IP = "http://192.168.210.3";
+String SEND_DATA_route = IP+"/tensao"; //Rota para envio de dados de tensao
+String STATE_route = IP+"/state"; //Rota para recebimento de dados de estado
 
 //Botão Send
 const int botao = 2;
@@ -41,6 +41,7 @@ void conectarWiFI(){
   Serial.print("Conectando a ");
   Serial.print(ssid);
   Serial.println("");
+  WiFi.mode(WIFI_STA);
   WiFi.begin(ssid, password); //Conecta com o SSID e senha definidos anteriormente
   while (WiFi.status() != WL_CONNECTED) { //Espera conexão com o WiFi
     delay(500);
@@ -50,12 +51,15 @@ void conectarWiFI(){
   Serial.println("Connectado"); 
   Serial.print("IP address: ");
   Serial.println(WiFi.localIP()); //Exibe IP do ESP8266
+  Serial.println("");
 }
 
 void inicializarOLED(){
   //Inicializa display OLED
   if(!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) { 
+    Serial.println("");
     Serial.println(F("SSD1306 allocation failed"));
+    Serial.println("");
     for(;;); 
   }
   display.display();

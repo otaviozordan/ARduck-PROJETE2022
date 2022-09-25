@@ -102,4 +102,4 @@ def ler_tensao():
 
     return Response(json.dumps(response), status=200, mimetype="application/json")
 
-app.run(port=80, debug=True)
+app.run(host='0.0.0.0', port=80, debug=True)
