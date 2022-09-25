@@ -74,7 +74,7 @@ def cadastrar_tensao():
         print("[mV]")
 
         response = {}
-        response["Valor cadastrado para tensão"] = tensao
+        response["Valor cadastrado para tensao"] = tensao
 
         return Response(json.dumps(response), status=200, mimetype="application/json")
     except Exception as e:
