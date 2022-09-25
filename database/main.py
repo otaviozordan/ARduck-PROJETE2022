@@ -22,8 +22,7 @@ def teste_post():
     print("")
     print("Post Recebido")
     print(recive)
-    print("")
-
+    
     return Response(json.dumps(recive), status=200, mimetype="application/json")
 
 @app.route("/start", methods=["GET"])
@@ -35,7 +34,6 @@ def start():
 
     print("")
     print("Start Server")
-    print("")
 
     return Response(json.dumps(response), status=200, mimetype="application/json")
 
@@ -48,8 +46,6 @@ def stop():
 
     print("")
     print("Stop Server")
-    print("")
-
 
     return Response(json.dumps(response), status=200, mimetype="application/json")
 
@@ -61,7 +57,6 @@ def state():
     print("")
     print("State Server", end=" ")
     print(state)
-    print("")
 
     return Response(json.dumps(response), status=200, mimetype="application/json")
 

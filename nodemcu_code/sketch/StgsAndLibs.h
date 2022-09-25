@@ -15,18 +15,18 @@ Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 #include <ESP8266WiFi.h>
 
 //Dados do WiFi
-const char* ssid = "Teleco";
-const char* password = "09876543";
+const char* ssid = "ARduck - PROJETE 2022";
+const char* password = "DebugDuck";
 
 //Dados de rotas
-String IP = "http://192.168.210.3";
+String IP = "http://192.168.0.100";
 String SEND_DATA_route = IP+"/tensao"; //Rota para envio de dados de tensao
 String STATE_route = IP+"/state"; //Rota para recebimento de dados de estado
 
 //Botão Send
-const int botao = 2;
+const int botao = 14; //D5
 //Led para indicar que o ESP recebeu uma requisição
-const int led = 2;
+const int led = BUILTIN_LED; //D4
 
 //Cliente HTTP e WiFi
 WiFiClient client; //Cria um cliente para conexão com o servidor
@@ -35,6 +35,9 @@ HTTPClient http; //Inicia cliente HTTP
 //Biblioteca para trabalho com JSON
 #include <ArduinoJson.h>
 DynamicJsonDocument doc(1024); //Cria um buffer para armazenar o JSON
+
+//Constantes de medição
+int tensao_referencia = 2500; //Tensão de referência para conversão do valor lido pelo ADC maxima.
 
 void conectarWiFI(){
   //Conecta com o WiFi
@@ -48,7 +51,8 @@ void conectarWiFI(){
     Serial.print(".");
   }
   Serial.println("");
-  Serial.println("Connectado"); 
+  Serial.print("Connectado a ");
+  Serial.println(ssid); 
   Serial.print("IP address: ");
   Serial.println(WiFi.localIP()); //Exibe IP do ESP8266
   Serial.println("");
