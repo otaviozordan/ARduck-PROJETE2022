@@ -27,7 +27,6 @@ void setup()
   // Inicia Monitor Serial para Debug
   Serial.begin(115200);
 
-  inicializarOLED();
   conectarWiFI();
 }
 
