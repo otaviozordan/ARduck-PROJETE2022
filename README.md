@@ -50,7 +50,7 @@ Agradecemos às seguintes pessoas que estão contribuindo para este projeto:
         <img src="https://github.com/otaviozordan/ARduck-PROJETE2022/blob/main/img/profile/Kayque.jpg" width="125px;" alt="Foto do Kayque"/><br>
         <sub>
           <b><p>Kayque Amado</p>
-          <p>(Desenvolvimento Mobile)</p><a href="https://github.com/DreamkitteXz"><h5>Acesse o meu perfil</h>
+          <p>(Desenvolvimento Mobile) (AR Dev)</p><a href="https://github.com/DreamkitteXz"><h5>Acesse o meu perfil</h>
          </a>
          </b>
         </sub>
