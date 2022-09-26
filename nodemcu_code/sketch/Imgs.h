@@ -15,10 +15,8 @@ void iniciarOLED(){
     Serial.println(F("SSD1306 allocation failed"));
     for(;;); 
   }
-
   display.display();
   delay(2000);
-
   display.clearDisplay();
 }
 

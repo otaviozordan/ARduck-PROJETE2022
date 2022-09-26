@@ -6,11 +6,6 @@
 const char* ssid = "ARduck - PROJETE 2022";
 const char* password = "DebugDuck";
 
-//Dados de rotas
-String IP = "http://192.168.0.100";
-String SEND_DATA_route = IP+"/tensao"; //Rota para envio de dados de tensao
-String STATE_route = IP+"/state"; //Rota para recebimento de dados de estado
-
 //Cliente HTTP e WiFi
 WiFiClient client; //Cria um cliente para conexão com o servidor
 HTTPClient http; //Inicia cliente HTTP
@@ -56,8 +51,7 @@ void conectarWiFI(){
 #include <ArduinoOTA.h>
 
 void OTA_Conection(){
-  
-    ArduinoOTA.setHostname("myesp8266");
+    ArduinoOTA.setHostname("ARduck-ESP8266");
     ArduinoOTA.onStart([]() {
     String type;
     if (ArduinoOTA.getCommand() == U_FLASH) {
