@@ -14,6 +14,7 @@
 
 #include "StgsAndLibs.h" //Configurações e Imports
 #include "Requests.h" //Funções de requisições
+#include "Imgs.h" //Imagens
 
 void setup()
 {

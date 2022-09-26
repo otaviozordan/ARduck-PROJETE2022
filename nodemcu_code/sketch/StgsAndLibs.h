@@ -11,11 +11,6 @@ String IP = "http://192.168.0.100";
 String SEND_DATA_route = IP+"/tensao"; //Rota para envio de dados de tensao
 String STATE_route = IP+"/state"; //Rota para recebimento de dados de estado
 
-//Botão Send
-const int botao = 14; //D5
-//Led para indicar que o ESP recebeu uma requisição
-const int led = BUILTIN_LED; //D4
-
 //Cliente HTTP e WiFi
 WiFiClient client; //Cria um cliente para conexão com o servidor
 HTTPClient http; //Inicia cliente HTTP
@@ -23,9 +18,6 @@ HTTPClient http; //Inicia cliente HTTP
 //Biblioteca para trabalho com JSON
 #include <ArduinoJson.h>
 DynamicJsonDocument doc(1024); //Cria um buffer para armazenar o JSON
-
-//Constantes de medição
-int tensao_referencia = 2500; //Tensão de referência para conversão do valor lido pelo ADC maxima.
 
 void conectarWiFI(){
   //Conecta com o WiFi
@@ -35,7 +27,10 @@ void conectarWiFI(){
   WiFi.mode(WIFI_STA);
   WiFi.begin(ssid, password); //Conecta com o SSID e senha definidos anteriormente
   while (WiFi.status() != WL_CONNECTED) { //Espera conexão com o WiFi
-    delay(500);
+    digitalWrite(led, HIGH);
+    delay(250);
+    digitalWrite(led, LOW);
+    delay(250);
     Serial.print(".");
   }
   Serial.println("");
@@ -45,3 +40,25 @@ void conectarWiFI(){
   Serial.println(WiFi.localIP()); //Exibe IP do ESP8266
   Serial.println("");
 }
+
+//Biblioteca para utilização do OLED
+#include <Wire.h>
+#include <MicroLCD.h>
+
+//Declarar OLED
+LCD_SSD1306 lcd; 
+
+void iniciarOLED(){
+  //Inicia o OLED
+  lcd.begin();
+  lcd.clear();
+}
+
+//Constantes de medição
+int tensao_referencia = 2500; //Tensão de referência para conversão do valor lido pelo ADC maxima.
+
+//Botão Send
+const int botao = 14; //D5
+
+//Led para indicar que o ESP recebeu uma requisição
+const int led = BUILTIN_LED; //D4

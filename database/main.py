@@ -1,7 +1,14 @@
+import string
+from tokenize import String
 from flask import Flask, Response, request
 import json
 
 app = Flask(__name__)
+
+global tensao
+tensao = 0
+global state
+staete = 0
 
 @app.route("/", methods=["GET"])
 def index():
@@ -29,7 +36,6 @@ def teste_post():
 def start():
     response = {}
     response["status"] = "on"
-    global state
     state = True
 
     print("")
@@ -41,7 +47,6 @@ def start():
 def stop():
     response = {}
     response["status"] = "off"
-    global state
     state = False
 
     print("")
@@ -65,7 +70,6 @@ def cadastrar_tensao():
     recive = request.get_json()
 
     try:
-        global tensao
         tensao=recive["tensao"]
         
         print("")
@@ -88,7 +92,7 @@ def cadastrar_tensao():
 @app.route("/tensao", methods=["GET"])
 def ler_tensao():
     response = {}
-    response["tensao"] = tensao
+    response["tensao"] = str(tensao)
 
     print("")
     print("Servidor fazendo  leitura:", end=" ")
