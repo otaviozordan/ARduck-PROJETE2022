@@ -39,7 +39,7 @@ Agradecemos às seguintes pessoas que estão contribuindo para este projeto:
       <a href="https://www.linkedin.com/in/otavio-zordan/">
         <img src="https://github.com/otaviozordan/ARduck-PROJETE2022/blob/main/img/profile/Otavio.jpg" width="125px;" alt="Foto do Otávio"/><br>
         <sub>
-          <b><p>Otávio Zordan</p><p>(Desenvolvimento Embarcado e Web)</p><a href="https://github.com/otaviozordan"><h5>Acesse o meu perfil</h>
+          <b><p>Otávio Zordan</p><p>(Desenvolvimento Embarcado | Web | Backend-)</p><a href="https://github.com/otaviozordan"><h5>Acesse o meu perfil</h>
           </a>
           </b>
         </sub>
@@ -50,7 +50,8 @@ Agradecemos às seguintes pessoas que estão contribuindo para este projeto:
         <img src="https://github.com/otaviozordan/ARduck-PROJETE2022/blob/main/img/profile/Kayque.jpg" width="125px;" alt="Foto do Kayque"/><br>
         <sub>
           <b><p>Kayque Amado</p>
-          <p>(Desenvolvimento Mobile) (AR Dev)</p><a href="https://github.com/DreamkitteXz"><h5>Acesse o meu perfil</h>
+          <p>(Desenvolvimento Mobile) (AR Dev)
+           (Ui/Ux)</p><a href="https://github.com/DreamkitteXz"><h5>Acesse o meu perfil</h>
          </a>
          </b>
         </sub>
