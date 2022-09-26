@@ -39,7 +39,7 @@ Agradecemos às seguintes pessoas que estão contribuindo para este projeto:
       <a href="https://www.linkedin.com/in/otavio-zordan/">
         <img src="https://github.com/otaviozordan/ARduck-PROJETE2022/blob/main/img/profile/Otavio.jpg" width="125px;" alt="Foto do Otávio"/><br>
         <sub>
-          <b><p>Otávio Zordan</p><p>(Desenvolvimento Embarcado e Web)</p><a href="https://github.com/otaviozordan"><h5>Acesse o meu perfil</h>
+         <b><p>Otávio Zordan</p><p>(Embedded Development)</p><p>(WebDesingner)</p><p>(Backend Dev)</p><a href="https://github.com/otaviozordan"><h5>Acesse o meu perfil</h>
           </a>
           </b>
         </sub>
@@ -50,7 +50,8 @@ Agradecemos às seguintes pessoas que estão contribuindo para este projeto:
         <img src="https://github.com/otaviozordan/ARduck-PROJETE2022/blob/main/img/profile/Kayque.jpg" width="125px;" alt="Foto do Kayque"/><br>
         <sub>
           <b><p>Kayque Amado</p>
-          <p>(Desenvolvimento Mobile)</p><a href="https://github.com/DreamkitteXz"><h5>Acesse o meu perfil</h>
+           <p>(Mobile Developer)</p><p>(AR Developer)</p>
+           <p>(Ui/Ux Full Stack)</p><p>(Frontend Developer)</p><a href="https://github.com/DreamkitteXz"><h5>Acesse o meu perfil</h>
          </a>
          </b>
         </sub>
@@ -60,7 +61,7 @@ Agradecemos às seguintes pessoas que estão contribuindo para este projeto:
       <a href="https://www.instagram.com/rayssapaduan_/">
         <img src="https://github.com/otaviozordan/ARduck-PROJETE2022/blob/main/img/profile/Rayssa.jpg" width="125px;" alt="Foto da Rayssa"/><br>
         <sub>
-          <b><p>Rayssa Paduan</p><p>(Desenvolvimento de Hardware)</p><a href="https://www.linkedin.com/in/rayssa-paduan-oliveira-742926226/"><h5>Acesse o meu perfil</h>
+          <b><p>Rayssa Paduan</p><p>(Hardware)</p><a href="https://www.linkedin.com/in/rayssa-paduan-oliveira-742926226/"><h5>Acesse o meu perfil</h>
         </a>
         </b>
         </sub>
@@ -70,7 +71,17 @@ Agradecemos às seguintes pessoas que estão contribuindo para este projeto:
       <a href="https://www.instagram.com/bflacerda18/">
         <img src="https://github.com/otaviozordan/ARduck-PROJETE2022/blob/main/img/profile/Beatriz.jpg" width="125px;" alt="Foto da Rayssa"/><br>
         <sub>
-          <b><p>Beatriz Lacerda</p><p>(Desenvolvimento de Software)</p><a href="https://www.linkedin.com/in/beatriz-fornereto-lacerda-72ba59226/"><h5>Acesse o meu perfil</h>
+          <b><p>Beatriz Lacerda</p><p>(Writer)</p><p>(Hardware)</p><a href="https://www.linkedin.com/in/beatriz-fornereto-lacerda-72ba59226/"><h5>Acesse o meu perfil</h>
+        </a>
+        </b>
+        </sub>
+      </a>
+    </td>
+       <td align="center">
+      <a href="https://www.instagram.com/rayssapaduan_/">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Rubber_duck_assisting_with_debugging.jpg" width="125px;" alt="Foto do Claudio"/><br>
+        <sub>
+          <b><p>Claudio Vinicius</p><p>(AR Developer)</p><a href="#"><h5>Acesse o meu perfil</h>
         </a>
         </b>
         </sub>
