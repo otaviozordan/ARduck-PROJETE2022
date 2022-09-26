@@ -79,7 +79,7 @@ Agradecemos às seguintes pessoas que estão contribuindo para este projeto:
     </td>
        <td align="center">
       <a href="https://www.instagram.com/rayssapaduan_/">
-        <img src="#" width="125px;" alt="Foto da Rayssa"/><br>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Rubber_duck_assisting_with_debugging.jpg" width="125px;" alt="Foto do Claudio"/><br>
         <sub>
           <b><p>Claudio Vinicius</p><p>(AR Developer)</p><a href="#"><h5>Acesse o meu perfil</h>
         </a>
