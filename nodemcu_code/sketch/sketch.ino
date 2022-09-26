@@ -11,7 +11,7 @@
  *      that when it receives a GET request returns a Json with the necessary data for the proper
  *      functioning of our application.
  **/
-
+ 
 #include "StgsAndLibs.h" //Configurações e Imports
 #include "Requests.h" //Funções de requisições
 #include "Imgs.h" //Imagens
@@ -29,6 +29,8 @@ void setup()
   Serial.begin(115200);
 
   conectarWiFI();
+  iniciarOLED();
+  OTA_Conection();
 }
 
 void loop()

@@ -92,7 +92,8 @@ def cadastrar_tensao():
 @app.route("/tensao", methods=["GET"])
 def ler_tensao():
     response = {}
-    response["tensao"] = str(tensao)
+    response["tensao_str"] = str(tensao) + " mV"
+    response["tensao_int"] = tensao
 
     print("")
     print("Servidor fazendo  leitura:", end=" ")
@@ -102,3 +103,4 @@ def ler_tensao():
     return Response(json.dumps(response), status=200, mimetype="application/json")
 
 app.run(host='0.0.0.0', port=80, debug=True)
+print("Server Stop")
