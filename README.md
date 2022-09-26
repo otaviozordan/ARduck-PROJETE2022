@@ -39,7 +39,7 @@ Agradecemos às seguintes pessoas que estão contribuindo para este projeto:
       <a href="https://www.linkedin.com/in/otavio-zordan/">
         <img src="https://github.com/otaviozordan/ARduck-PROJETE2022/blob/main/img/profile/Otavio.jpg" width="125px;" alt="Foto do Otávio"/><br>
         <sub>
-          <b><p>Otávio Zordan</p><p>(Desenvolvimento Embarcado | Web | Backend-)</p><a href="https://github.com/otaviozordan"><h5>Acesse o meu perfil</h>
+         <b><p>Otávio Zordan</p><p>(Desenvolvimento Embarcado</p><p>Web</p><p>Backend</p><a href="https://github.com/otaviozordan"><h5>Acesse o meu perfil</h>
           </a>
           </b>
         </sub>
