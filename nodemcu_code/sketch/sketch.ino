@@ -27,9 +27,8 @@ void setup()
 
   // Inicia Monitor Serial para Debug
   Serial.begin(115200);
-
+  
   conectarWiFI();
-  iniciarOLED();
   OTA_Conection();
 }
 
@@ -41,6 +40,7 @@ void loop()
     if (state_server)
     {
       tensao_send();
+      delay(2000);
     }
     else
     { 
@@ -50,6 +50,7 @@ void loop()
       do
       {
         state_test();
+        delay(1000);
       } while (state_server);
     }
   }

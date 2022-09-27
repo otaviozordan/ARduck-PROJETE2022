@@ -3,8 +3,8 @@
 #include <ESP8266WiFi.h>
 
 //Dados do WiFi
-const char* ssid = "ARduck - PROJETE 2022";
-const char* password = "DebugDuck";
+const char* ssid = "TP-Link_52EB";
+const char* password = "15712981";
 
 //Cliente HTTP e WiFi
 WiFiClient client; //Cria um cliente para conexão com o servidor
@@ -13,9 +13,6 @@ HTTPClient http; //Inicia cliente HTTP
 //Biblioteca para trabalho com JSON
 #include <ArduinoJson.h>
 DynamicJsonDocument doc(1024); //Cria um buffer para armazenar o JSON
-
-//Constantes de medição
-int tensao_referencia = 2500; //Tensão de referência para conversão do valor lido pelo ADC maxima.
 
 //Botão Send
 const int botao = 14; //D5

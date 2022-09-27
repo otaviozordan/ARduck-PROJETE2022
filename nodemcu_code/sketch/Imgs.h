@@ -1,5 +1,5 @@
 //Bibliotecas para uso do OLED
-#include <Wire.h>
+/*#include <Wire.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
 
@@ -19,6 +19,7 @@ void iniciarOLED(){
   delay(2000);
   display.clearDisplay();
 }
+*/
 
 const PROGMEM uint8_t duck[48 * 48 / 8] = {
 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,

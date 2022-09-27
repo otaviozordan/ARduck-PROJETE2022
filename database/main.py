@@ -8,7 +8,7 @@ app = Flask(__name__)
 global tensao
 tensao = 0
 global state
-staete = 0
+state = False
 
 @app.route("/", methods=["GET"])
 def index():
@@ -36,6 +36,7 @@ def teste_post():
 def start():
     response = {}
     response["status"] = "on"
+    global state
     state = True
 
     print("")
@@ -47,6 +48,7 @@ def start():
 def stop():
     response = {}
     response["status"] = "off"
+    global state
     state = False
 
     print("")

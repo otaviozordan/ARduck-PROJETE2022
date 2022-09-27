@@ -1,7 +1,10 @@
 //Dados de rotas
-String IP = "http://192.168.0.100";
+String IP = "http://192.168.0.102";
 String SEND_DATA_route = IP+"/tensao"; //Rota para envio de dados de tensao
 String STATE_route = IP+"/state"; //Rota para recebimento de dados de estado
+
+//Constantes de medição
+int tensao_referencia = 2500; //Tensão de referência para conversão do valor lido pelo ADC maxima.
 
 bool state_server;
 
@@ -49,11 +52,10 @@ void tensao_send()
     int tensao;
     tensao = analogRead(A0) / 1023.0 * tensao_referencia;
     String JSON;
-    JSON = "{\"tensao\": ";
-    JSON += tensao + ",";
-    JSON += "\"escala\": ";
+    JSON = "{\"tensao\":";
+    JSON += tensao;
+    JSON += ",\"escala\": ";
     JSON += "\"mV\"}";
-    JSON += "}";
     Serial.println(JSON);
 
     http.begin(client, SEND_DATA_route);                // Inicia cliente HTTP com o endereço do servidor
@@ -68,6 +70,7 @@ void tensao_send()
     {
         String payload = http.getString(); // Recebe resposta do servidor
         Serial.println("Requisição enviada com sucesso");
+        Serial.println("");
         Serial.println("Resposta do servidor: ");
         Serial.println(payload);                                // Exibe resposta do servidor
         Serial.println("*----------------------------------*"); // Pula linha
