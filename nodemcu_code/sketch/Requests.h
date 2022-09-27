@@ -1,5 +1,5 @@
 //Dados de rotas
-String IP = "http://192.168.0.102";
+String IP = "http://192.168.0.100";
 String SEND_DATA_route = IP+"/tensao"; //Rota para envio de dados de tensao
 String STATE_route = IP+"/state"; //Rota para recebimento de dados de estado
 

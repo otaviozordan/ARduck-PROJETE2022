@@ -3,8 +3,8 @@
 #include <ESP8266WiFi.h>
 
 //Dados do WiFi
-const char* ssid = "TP-Link_52EB";
-const char* password = "15712981";
+const char* ssid = "ARduck - PROJETE 2022";
+const char* password = "DebugDuck";
 
 //Cliente HTTP e WiFi
 WiFiClient client; //Cria um cliente para conexão com o servidor

@@ -1845,6 +1845,8 @@ fieldset:disabled a.btn {
 
 .btn-primary:hover {
  animation: pulsate 1s ease-out;
+ transform: scale(1.1);
+ transition: all 0.5s;
 } 
 
 @keyframes pulsate {
@@ -1979,7 +1981,9 @@ fieldset:disabled a.btn {
       } 
       
 .btn-light:hover {
-       animation: pulsate 1s ease-out;
+    animation: pulsate 1s ease-out; 
+    transform: scale(1.1);
+    transition: all 0.5s;
       } 
 
 .btn-dark {
@@ -7853,6 +7857,8 @@ footer h5 {
 
 .btn-red:hover {
   animation: pulsate 1s ease-out;
+  transform: scale(1.1);
+  transition: all 0.5s;
   color: #850c23;
 }     
 
