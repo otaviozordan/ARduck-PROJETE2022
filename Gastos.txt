@@ -2,3 +2,4 @@ Display OLED ->  R$ 45,00
 Corte MDF -> R$ 9,00
 Componentes -> R$ 5,00
 Jumpers -> R$ 23,00
+Licensa FlutterFlow -> 35,00 p/ cada
