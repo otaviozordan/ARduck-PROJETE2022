@@ -104,7 +104,6 @@ def cadastrar_tensao():
 
     return Response(json.dumps(response), status=400, mimetype="application/json")
 
-
 @app.route("/tensao", methods=["GET"])
 def ler_tensao():
   response = {}

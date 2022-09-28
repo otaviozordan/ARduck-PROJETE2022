@@ -10,19 +10,19 @@
  *      will be displayed to the user. It is also necessary that the ESP hosted a web server
  *      that when it receives a GET request returns a Json with the necessary data for the proper
  *      functioning of our application.
-**/
- 
+ **/
+
 #include "StgsAndLibs.h" //Configurações e Imports
-#include "Requests.h" //Funções de requisições
-#include "Imgs.h" //Imagens
+#include "Requests.h"    //Funções de requisições
+#include "Imgs.h"        //Imagens
 
 void setup()
 {
   // Inicia Monitor Serial para Debug
   Serial.begin(115200);
-  
+
   // Inicia o display
-  iniciarOLED();
+    iniciarOLED();
   draw_telainicial();
 
   // Botão send para enviar a requisição
@@ -31,34 +31,47 @@ void setup()
   // Led de indicação
   pinMode(led, OUTPUT);
   digitalWrite(led, 0);
-  
+
   draw_conectando(ssid);
-  conectarWiFI();
-  OTA_Conection();
+    conectarWiFI();
+    OTA_Conection();
   draw_conectado();
 }
 
 void loop()
-{    
+{
   if (!digitalRead(botao))
-  {
-    state_test();
+  { 
+    draw_verificandoEstado();
+      state_test();
+    draw_response(state_server);
     if (state_server)
     {
-      tensao_send();
-      delay(2000);
+      draw_medindoTensao();
+        tensao_send();
+      draw_tensao(tensao);
+      draw_enviandoDados(httpStatus_Global);
     }
     else
-    { 
+    {
       Serial.println("Servidor indisponível");
       Serial.println("Inicializando modo de espera, inicialize modo de medicao para continuar");
       Serial.println("");
       do
       {
-        state_test();
+        draw_modoEspera();
+        draw_verificandoEstado();
+          state_test();
         delay(1000);
-      } while (state_server);
+        if(botao){
+          break;
+        }
+      } while (!state_server);
     }
+  }
+  else
+  {
+    draw_espera();
   }
   ArduinoOTA.handle();
 }

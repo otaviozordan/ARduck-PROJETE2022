@@ -73,7 +73,7 @@ void draw_telainicial()
   display.drawString(63, 26, "ARduck");
   display.drawString(63, 45, "Iniciando...");
   display.display();
-  delay(1000);
+  delay(3000);
 }
 
 void draw_conectando(String ssid_stg)
@@ -101,5 +101,119 @@ void draw_conectado(){
   display.setFont(ArialMT_Plain_10);
   display.drawString(63, 45, ssid);
   display.display();
+  delay(3000);
+  display.clear();
+}
+
+void draw_espera(){
+  display.clear();
+  display.setTextAlignment(TEXT_ALIGN_CENTER);
+  display.setFont(ArialMT_Plain_16);
+  display.drawString(63, 5, "ARduck");
+  display.drawString(63, 25, "Inicie o desafio e");
+  display.setFont(ArialMT_Plain_10);
+  display.drawString(63, 45, "aperte o botão para medir");
+  display.display();
+  delay(500);
+}
+
+void draw_verificandoEstado(){
+  display.clear();
+  display.setTextAlignment(TEXT_ALIGN_CENTER);
+  display.setFont(ArialMT_Plain_16);
+  display.drawString(63, 7, "ARduck");
+  display.drawString(63, 26, "Conectando ao");
+  display.drawString(63, 45, "Servidor");
+  display.display();
   delay(1000);
+
+}
+
+void draw_response(bool status){
+  display.clear();
+  display.setTextAlignment(TEXT_ALIGN_CENTER);
+  display.setFont(ArialMT_Plain_16);
+  display.drawString(63, 7, "ARduck");
+  display.drawString(63, 26, "Servidor");
+  display.drawString(63, 45,  String(status ? "  " : " não ") + "está ativo");
+  display.display();
+  delay(3000);
+}
+
+void draw_medindoTensao(){
+  display.clear();
+  display.setTextAlignment(TEXT_ALIGN_CENTER);
+  display.setFont(ArialMT_Plain_16);
+  display.drawString(63, 7, "ARduck");
+  display.drawString(63, 26, "Medindo tensão");
+  display.drawString(63, 45, "do circuito");
+  display.display();
+  delay(2000);
+}
+
+void draw_tensao(int tensao){
+  display.clear();
+  display.setTextAlignment(TEXT_ALIGN_CENTER);
+  display.setFont(ArialMT_Plain_16);
+  display.drawString(63, 7, "ARduck");
+  display.drawString(63, 26, "Tensão medida:");
+  String tensao_str = String(tensao) + "mV";
+  display.drawString(63, 45, tensao_str);
+  display.display();
+  delay(3000);
+}
+
+void draw_enviandoDados(int httpcode){
+  display.clear();
+  display.setTextAlignment(TEXT_ALIGN_CENTER);
+  display.setFont(ArialMT_Plain_16);
+  display.drawString(63, 7, "ARduck");
+  display.drawString(63, 26, "Enviando dados");
+  display.drawString(63, 45, "ao servidor");
+  display.display();
+  delay(2000);
+  display.clear();
+
+  if (httpcode == 200){
+    display.setTextAlignment(TEXT_ALIGN_CENTER);
+    display.setFont(ArialMT_Plain_16);
+    display.drawString(63, 7, "ARduck");
+    display.drawString(63, 26, "Dados enviados");
+    display.drawString(63, 45, "com sucesso");
+    display.display();
+    delay(3000);
+    display.clear();
+  }
+  else{
+    display.setTextAlignment(TEXT_ALIGN_CENTER);
+    display.setFont(ArialMT_Plain_16);
+    display.drawString(63, 7, "ARduck");
+    display.drawString(63, 26, "Erro ao enviar");
+    display.drawString(63, 45, "dados ao servidor");
+    display.display();
+    delay(3000);
+    display.clear();
+  }
+}
+
+void draw_servidorInativo(){
+  display.clear();
+  display.setTextAlignment(TEXT_ALIGN_CENTER);
+  display.setFont(ArialMT_Plain_16);
+  display.drawString(63, 7, "ARduck");
+  display.drawString(63, 26, "Servidor");
+  display.drawString(63, 45, "inativo");
+  display.display();
+  delay(3000);
+}
+
+void draw_modoEspera(){
+  display.clear();
+  display.setTextAlignment(TEXT_ALIGN_CENTER);
+  display.setFont(ArialMT_Plain_16);
+  display.drawString(63, 7, "ARduck");
+  display.drawString(63, 26, "Inicie esta missão");
+  display.drawString(63, 45, "No Aplicativo");
+  display.display();
+  delay(3000);
 }

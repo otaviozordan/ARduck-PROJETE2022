@@ -1,10 +1,15 @@
 //Dados de rotas
-String IP = "http://192.168.0.100";
+String IP = "https://9c8f-189-125-180-6.sa.ngrok.io";
 String SEND_DATA_route = IP+"/tensao"; //Rota para envio de dados de tensao
 String STATE_route = IP+"/state"; //Rota para recebimento de dados de estado
 
 //Constantes de medição
-int tensao_referencia = 2500; //Tensão de referência para conversão do valor lido pelo ADC maxima.
+int tensao_referencia = 2800; //Tensão de referência para conversão do valor lido pelo ADC maxima.
+
+//Tensao de saida
+int tensao;
+
+int httpStatus_Global;
 
 bool state_server;
 
@@ -49,7 +54,6 @@ void tensao_send()
     Serial.println("Enviando requisição para: " + SEND_DATA_route); // Exibe rota de envio de dados
 
     // Prepara payload para envio
-    int tensao;
     tensao = analogRead(A0) / 1023.0 * tensao_referencia;
     String JSON;
     JSON = "{\"tensao\":";
@@ -62,6 +66,7 @@ void tensao_send()
     http.addHeader("Content-Type", "application/json"); // Adiciona cabeçalho ao cliente HTTP
 
     int httpCode = http.POST(JSON); // Envia requisição POST com o payload
+    httpStatus_Global = httpCode;
 
     Serial.print("Código de resposta: ");
     Serial.println(httpCode); // Exibe código de resposta do servidor
