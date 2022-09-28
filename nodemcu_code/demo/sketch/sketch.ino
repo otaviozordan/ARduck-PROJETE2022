@@ -10,7 +10,7 @@
  *      will be displayed to the user. It is also necessary that the ESP hosted a web server
  *      that when it receives a GET request returns a Json with the necessary data for the proper
  *      functioning of our application.
- **/
+**/
  
 #include "StgsAndLibs.h" //Configurações e Imports
 #include "Requests.h" //Funções de requisições
@@ -18,15 +18,19 @@
 
 void setup()
 {
+  // Inicia Monitor Serial para Debug
+  Serial.begin(115200);
+
+  // Inicia o display
+  iniciarOLED();
+  drow_telainicial();
+
   // Botão send para enviar a requisição
   pinMode(botao, INPUT_PULLUP);
 
   // Led de indicação
   pinMode(led, OUTPUT);
   digitalWrite(led, 0);
-
-  // Inicia Monitor Serial para Debug
-  Serial.begin(115200);
   
   conectarWiFI();
   OTA_Conection();

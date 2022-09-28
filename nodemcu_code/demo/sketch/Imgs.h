@@ -1,29 +1,31 @@
 //Pinos do NodeMCU
-// SDA => D1
-// SCL => D2
+// SDA => D1 (GPIO5)
+// SCL => D2 (GPIO4)
 
 //Bibliotecas para uso do OLED
-/*#include <Wire.h>
-#include <Adafruit_GFX.h>
-#include <Adafruit_SSD1306.h>
+#include <Wire.h>
+#include "SSD1306Wire.h"
 
-#define SCREEN_WIDTH 128 // OLED display width, in pixels
-#define SCREEN_HEIGHT 64 // OLED display height, in pixels
-
-#define OLED_RESET     -1
-#define SCREEN_ADDRESS 0x3D 
-Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);; 
+//Criação do objeto para o display OLED
+SSD1306Wire  display(0x3c, 5, 4);
 
 void iniciarOLED(){
-  if(!display.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESS)) {
-    Serial.println(F("SSD1306 allocation failed"));
-    for(;;); 
-  }
-  display.display();
-  delay(2000);
-  display.clearDisplay();
+  display.init();
+  display.flipScreenVertically();
 }
-*/
+
+void drow_telainicial()
+{
+  //Apaga o display
+  display.clear();
+  display.setTextAlignment(TEXT_ALIGN_CENTER);
+  //Seleciona a fonte
+  display.setFont(ArialMT_Plain_16);
+  display.drawString(63, 10, "Projete 2022");
+  display.drawString(63, 26, "ARduck");
+  display.drawString(63, 45, "Iniciando...");
+  display.display();
+}
 
 const PROGMEM uint8_t duck[48 * 48 / 8] = {
 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
