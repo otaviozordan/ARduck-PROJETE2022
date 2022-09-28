@@ -5,12 +5,16 @@ app = Flask(__name__)
 
 global tensao
 tensao = 0
+
 global state
 state = False
 
-
 @app.route("/", methods=["GET"])
 def index():
+    return ler_tensao()
+
+@app.route("/routes", methods=["GET"])
+def routes():
   response = {}
   response["Teste de Resquisicao"] = "/ [POST]"
   response["Cadastrar valor para tensao"] = "/tensao [POST]"
@@ -67,7 +71,11 @@ def state():
   print("State Server", end=" ")
   print(state)
 
-  return Response(json.dumps(response), status=200, mimetype="application/json")
+  try:
+    return Response(json.dumps(response), status=200, mimetype="application/json")
+
+  except:
+    return Response(json.dumps({"status":False}), status=200, mimetype="application/json")
 
 
 @app.route("/tensao", methods=["POST"])
@@ -88,7 +96,7 @@ def cadastrar_tensao():
 
     return Response(json.dumps(response), status=200, mimetype="application/json")
   
-  except Exception as e:
+  except:
     print('Erro ao enviar')
 
     response = {}
@@ -111,4 +119,3 @@ def ler_tensao():
   return Response(json.dumps(response), status=200, mimetype="application/json")
 
 app.run(host='0.0.0.0', port=80, debug=True)
-print("Server Stop")
