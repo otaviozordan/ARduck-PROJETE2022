@@ -31,8 +31,7 @@ void conectarWiFI(){
     digitalWrite(led, HIGH);
     delay(250);
     digitalWrite(led, LOW);
-    delay(250);
-    Serial.print(".");
+    delay(250); 
   }
   Serial.println("");
   Serial.print("Connectado a ");

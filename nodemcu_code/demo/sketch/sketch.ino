@@ -20,10 +20,10 @@ void setup()
 {
   // Inicia Monitor Serial para Debug
   Serial.begin(115200);
-
+  
   // Inicia o display
   iniciarOLED();
-  drow_telainicial();
+  draw_telainicial();
 
   // Botão send para enviar a requisição
   pinMode(botao, INPUT_PULLUP);
@@ -32,8 +32,10 @@ void setup()
   pinMode(led, OUTPUT);
   digitalWrite(led, 0);
   
+  draw_conectando(ssid);
   conectarWiFI();
   OTA_Conection();
+  draw_conectado();
 }
 
 void loop()
@@ -58,4 +60,5 @@ void loop()
       } while (state_server);
     }
   }
+  ArduinoOTA.handle();
 }
