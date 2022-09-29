@@ -3,12 +3,15 @@ import json
 
 app = Flask(__name__)
 
+#declara variavel para tensão medida
 global tensao
 tensao = 0
 
+#status da medição
 global state
 state = False
 
+#tolerancia do circuito de medição (%)
 global tolmax
 tolmax = 15
 
@@ -24,6 +27,7 @@ def routes():
   response["Inicia leitura de tensao"] = "/start [GET]"
   response["Para leitura de tensao"] = "/stop [GET]"
   response["Estado atual do servidor"] = "/state [GET]"
+  response["Indentifica medida no circuito"] = "/circuito/<id> [GET]"
 
   return Response(json.dumps(response), status=200, mimetype="application/json")
 
@@ -108,10 +112,16 @@ def ler_tensao():
 
   return Response(json.dumps(response), status=200, mimetype="application/json")
 
+@app.route("/circuito", methods=["GET"])
+def lista_circuitos():
+  response = {}
+  response["Erro, informe: "] = "/circuito/<id>"
+  return Response(json.dumps(response), status=200, mimetype="application/json")
+
 @app.route("/circuito/<id>", methods=["GET"])
 def retrna_medida(id):
   response = {}
-  listResistor = []
+  listaElementos = []
   global VresistorAnterior 
   global VresistormaxAnterior 
   global VresistorminAnterior
@@ -129,26 +139,40 @@ def retrna_medida(id):
       nameResistor = (i['name'])
       print("Encontrado", end=" ")
       print(nameResistor)
-      listResistor.append(nameResistor)
-      print(listResistor)
-      VresistorAnterior = Vresistor
-      VresistormaxAnterior = Vresistormax
-      VresistorminAnterior = Vresistormin
+      listaElementos.append(nameResistor)
+      print(listaElementos)
+      VelementoAnterior = Vresistor
+      VelementomaxAnterior = Vresistormax
+      VelementominAnterior = Vresistormin
 
-  if(len(listResistor) == 0):
-    nameResistor = "Resistor não encontrado"
-    listResistor.append(nameResistor)
-    VresistorAnterior = "Indefinido"
-    VresistormaxAnterior = "Indefinido"
-    VresistorminAnterior = "Indefinido"
+  Vfonte = data["dados do circuito"][1]["value"]
+  Vfontemax = Vfonte + Vfonte*tolmax/100
+  Vfontemin = Vfonte - Vfonte*tolmax/100  
+  if(Vfontemax > tensao > Vfontemin ):
+      nameFonte = data["dados do circuito"][1]["name"]
+      print("Encontrado", end=" ")
+      print(nameFonte)
+      listaElementos.append(nameFonte)
+      print(listaElementos)
+      VelementoAnterior = Vfonte
+      VelementomaxAnterior = Vfontemax
+      VelementominAnterior = Vfontemin
 
-  print("resistores: ", listResistor)
 
-  response["resistor"] = listResistor
+  if(len(listaElementos) == 0):
+    nameResistor = "Elemento nao encontrado"
+    listaElementos.append(nameResistor)
+    VelementoAnterior = "Indefinido"
+    VelementomaxAnterior = "Indefinido"
+    VelementominAnterior = "Indefinido"
+
+  print("Elementos: ", listaElementos)
+
+  response["elemento"] = listaElementos
   response["tensao medida"] = tensao
-  response["tensao do resistor"] = VresistorAnterior
-  response["tensao maxima aceitavel"] = VresistormaxAnterior
-  response["tensao minima aceitavel"] = VresistorminAnterior
+  response["tensao do elemento"] = VelementoAnterior
+  response["tensao maxima aceitavel"] = VelementomaxAnterior
+  response["tensao minima aceitavel"] = VelementominAnterior
 
   return Response(json.dumps(response), status=200, mimetype="application/json")
 

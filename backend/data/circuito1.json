@@ -6,8 +6,8 @@
             "type":"Serie"
         },
         {
-            "name": "Vtotal",
-            "value": 5
+            "name": "Vtotal (VCC)",
+            "value": 5000
         },
         {
             "name": "Rtotal",
