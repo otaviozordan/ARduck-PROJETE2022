@@ -1,4 +1,23 @@
 {
+    "dados do circuito":
+    [
+        {
+            "name":"Tipo",
+            "type":"Serie"
+        },
+        {
+            "name": "Vtotal",
+            "value": 5
+        },
+        {
+            "name": "Rtotal",
+            "value": 5000
+        },
+        {
+            "name": "Itotal",
+            "value": 0.001
+        }
+    ],
     "resistores":
     [
         {
@@ -36,22 +55,6 @@
             "value": 1000,
             "tolerance": 5,
             "tensao": 1000
-        }
-    ],
-
-    "dados do circuito":
-    [
-        {
-            "name": "Vtotal",
-            "value": 5
-        },
-        {
-            "name": "Rtotal",
-            "value": 5000
-        },
-        {
-            "name": "Itotal",
-            "value": 0.001
         }
     ]
 }
