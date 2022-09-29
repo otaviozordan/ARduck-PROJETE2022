@@ -1,7 +1,7 @@
 //Dados de rotas
-String IP = "https://9c8f-189-125-180-6.sa.ngrok.io";
-String SEND_DATA_route = IP+"/tensao"; //Rota para envio de dados de tensao
-String STATE_route = IP+"/state"; //Rota para recebimento de dados de estado
+String URL = "http://backendarduck.otaviozordan.repl.co";
+String SEND_DATA_route = URL+"/tensao"; //Rota para envio de dados de tensao
+String STATE_route = URL+"/state"; //Rota para recebimento de dados de estado
 
 //Constantes de medição
 int tensao_referencia = 2800; //Tensão de referência para conversão do valor lido pelo ADC maxima.
@@ -40,10 +40,12 @@ void state_test()
     }
     else
     {
-        http.end();
+        String payload = http.getString();     // Recebe resposta do servidor
+        http.end();                            // Finaliza requisição
+        Serial.println(payload);   
         Serial.println("Erro ao enviar requisição");
         Serial.println("");
-        state_server = false;
+        state_server = true;
         return;
     }
 }

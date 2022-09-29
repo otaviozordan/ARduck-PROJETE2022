@@ -6,6 +6,9 @@
 const char* ssid = "ARduck - PROJETE 2022";
 const char* password = "DebugDuck";
 
+//Endereço IP
+String IP;
+
 //Cliente HTTP e WiFi
 WiFiClient client; //Cria um cliente para conexão com o servidor
 HTTPClient http; //Inicia cliente HTTP
@@ -37,6 +40,8 @@ void conectarWiFI(){
   Serial.print("Connectado a ");
   Serial.println(ssid); 
   Serial.print("IP address: ");
+
+  IP = WiFi.localIP().toString();
   Serial.println(WiFi.localIP()); //Exibe IP do ESP8266
   Serial.println("");
 }

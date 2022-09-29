@@ -88,7 +88,7 @@ void draw_conectando(String ssid_stg)
   display.setFont(ArialMT_Plain_10);
   display.drawString(63, 45, ssid_stg);
   display.display();
-  delay(1000);
+  delay(500);
 }
 
 void draw_conectado(){
@@ -105,6 +105,17 @@ void draw_conectado(){
   display.clear();
 }
 
+void draw_ip(String ip_stg){
+ display.clear();
+ display.setTextAlignment(TEXT_ALIGN_CENTER);
+ display.setFont(ArialMT_Plain_16);
+ display.drawString(63, 7, "ARduck");
+ display.drawString(63, 26, "Endereço IP:");
+ display.drawString(63, 45, ip_stg);
+ display.display();
+ delay(3000);
+}
+
 void draw_espera(){
   display.clear();
   display.setTextAlignment(TEXT_ALIGN_CENTER);
@@ -114,7 +125,7 @@ void draw_espera(){
   display.setFont(ArialMT_Plain_10);
   display.drawString(63, 45, "aperte o botão para medir");
   display.display();
-  delay(500);
+  delay(200);
 }
 
 void draw_verificandoEstado(){
@@ -126,7 +137,6 @@ void draw_verificandoEstado(){
   display.drawString(63, 45, "Servidor");
   display.display();
   delay(1000);
-
 }
 
 void draw_response(bool status){
@@ -148,7 +158,7 @@ void draw_medindoTensao(){
   display.drawString(63, 26, "Medindo tensão");
   display.drawString(63, 45, "do circuito");
   display.display();
-  delay(2000);
+  delay(2500);
 }
 
 void draw_tensao(int tensao){
@@ -160,7 +170,7 @@ void draw_tensao(int tensao){
   String tensao_str = String(tensao) + "mV";
   display.drawString(63, 45, tensao_str);
   display.display();
-  delay(3000);
+  delay(4000);
 }
 
 void draw_enviandoDados(int httpcode){
@@ -193,6 +203,12 @@ void draw_enviandoDados(int httpcode){
     display.display();
     delay(3000);
     display.clear();
+    display.drawString(63, 7, "ARduck");
+    display.drawString(63, 26, "Código de erro:");
+    display.drawString(63, 45, String(httpcode));
+    display.display();
+    delay(3000);
+    display.clear();
   }
 }
 
@@ -216,4 +232,15 @@ void draw_modoEspera(){
   display.drawString(63, 45, "No Aplicativo");
   display.display();
   delay(3000);
+}
+
+void draw_cancelar(){
+  display.clear();
+  display.setTextAlignment(TEXT_ALIGN_CENTER);
+  display.setFont(ArialMT_Plain_16);
+  display.drawString(63, 7, "ARduck");
+  display.drawString(63, 26, "Cancelando");
+  display.drawString(63, 45, "missão");
+  display.display();
+  delay(200);
 }

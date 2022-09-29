@@ -9,14 +9,16 @@ tensao = 0
 global state
 state = False
 
+global tolmax
+tolmax = 15
+
 @app.route("/", methods=["GET"])
 def index():
-    return ler_tensao()
+  return ler_tensao()
 
 @app.route("/routes", methods=["GET"])
 def routes():
   response = {}
-  response["Teste de Resquisicao"] = "/ [POST]"
   response["Cadastrar valor para tensao"] = "/tensao [POST]"
   response["Ler valor de tensao"] = "/tensao [GET]"
   response["Inicia leitura de tensao"] = "/start [GET]"
@@ -24,17 +26,6 @@ def routes():
   response["Estado atual do servidor"] = "/state [GET]"
 
   return Response(json.dumps(response), status=200, mimetype="application/json")
-
-@app.route("/", methods=["POST"])
-def teste_post():
-  recive = request.get_json()
-
-  print("")
-  print("Post Recebido")
-  print(recive)
-
-  return Response(json.dumps(recive), status=200, mimetype="application/json")
-
 
 @app.route("/start", methods=["GET"])
 def start():
@@ -114,6 +105,50 @@ def ler_tensao():
   print("Servidor fazendo  leitura:", end=" ")
   print(tensao, end="")
   print("[mV]")
+
+  return Response(json.dumps(response), status=200, mimetype="application/json")
+
+@app.route("/circuito/<id>", methods=["GET"])
+def retrna_medida(id):
+  response = {}
+  listResistor = []
+  global VresistorAnterior 
+  global VresistormaxAnterior 
+  global VresistorminAnterior
+
+  file = open('backend\data\circuito' + id + '.json')
+  data = json.load(file)
+
+  for i in data['resistores']:
+    print(i["name"])
+    Vresistor = (i['tensao'])
+    Vresistormax = Vresistor + Vresistor*tolmax/100
+    Vresistormin = Vresistor - Vresistor*tolmax/100
+
+    if(Vresistormax > tensao > Vresistormin):
+      nameResistor = (i['name'])
+      print("Encontrado", end=" ")
+      print(nameResistor)
+      listResistor.append(nameResistor)
+      print(listResistor)
+      VresistorAnterior = Vresistor
+      VresistormaxAnterior = Vresistormax
+      VresistorminAnterior = Vresistormin
+
+  if(len(listResistor) == 0):
+    nameResistor = "Resistor não encontrado"
+    listResistor.append(nameResistor)
+    VresistorAnterior = "Indefinido"
+    VresistormaxAnterior = "Indefinido"
+    VresistorminAnterior = "Indefinido"
+
+  print("resistores: ", listResistor)
+
+  response["resistor"] = listResistor
+  response["tensao medida"] = tensao
+  response["tensao do resistor"] = VresistorAnterior
+  response["tensao maxima aceitavel"] = VresistormaxAnterior
+  response["tensao minima aceitavel"] = VresistorminAnterior
 
   return Response(json.dumps(response), status=200, mimetype="application/json")
 

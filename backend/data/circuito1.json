@@ -1,0 +1,43 @@
+{
+    "resistores":
+    [
+        {
+            "id": 1,
+            "name": "R1",
+            "value": 330,
+            "tolerance": 5,
+            "tensao": 582
+        },
+        {
+            "id": 2,
+            "name": "R2",
+            "value": 1000,
+            "tolerance": 5,
+            "tensao": 1765
+
+        },
+        {
+            "id": 3,
+            "name": "R3",
+            "value": 1500,
+            "tolerance": 5,
+            "tensao": 2647
+        }
+    ],
+
+    "dados do circuito":
+    [
+        {
+            "name": "Vtotal",
+            "value": 5
+        },
+        {
+            "name": "Rtotal",
+            "value": 2830
+        },
+        {
+            "name": "Itotal",
+            "value": 0.001765
+        }
+    ]
+}

@@ -36,6 +36,7 @@ void setup()
     conectarWiFI();
     OTA_Conection();
   draw_conectado();
+  draw_ip(IP);
 }
 
 void loop()
@@ -62,8 +63,8 @@ void loop()
         draw_modoEspera();
         draw_verificandoEstado();
           state_test();
-        delay(1000);
-        if(botao){
+        if(!botao){
+          draw_cancelar();
           break;
         }
       } while (!state_server);
