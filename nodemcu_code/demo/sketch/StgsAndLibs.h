@@ -1,6 +1,7 @@
 //Biblioteca para utilização do ESP8266
 #include <ESP8266HTTPClient.h>
 #include <ESP8266WiFi.h>
+#include <WiFiClientSecure.h> 
 
 //Dados do WiFi
 const char* ssid = "ARduck - PROJETE 2022";
@@ -8,10 +9,6 @@ const char* password = "DebugDuck";
 
 //Endereço IP
 String IP;
-
-//Cliente HTTP e WiFi
-WiFiClient client; //Cria um cliente para conexão com o servidor
-HTTPClient http; //Inicia cliente HTTP
 
 //Biblioteca para trabalho com JSON
 #include <ArduinoJson.h>

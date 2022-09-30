@@ -120,10 +120,13 @@ void draw_espera(){
   display.clear();
   display.setTextAlignment(TEXT_ALIGN_CENTER);
   display.setFont(ArialMT_Plain_16);
-  display.drawString(63, 5, "ARduck");
-  display.drawString(63, 25, "Inicie o desafio e");
+  display.drawString(63, 7, "ARduck");
+  display.drawString(63, 26, "Inicie o desafio e");
   display.setFont(ArialMT_Plain_10);
   display.drawString(63, 45, "aperte o botão para medir");
+  display.display();
+  delay(800);
+  display.clear();
   display.display();
   delay(200);
 }
@@ -139,7 +142,7 @@ void draw_verificandoEstado(){
   delay(1000);
 }
 
-void draw_response(bool status){
+void draw_response(bool status, int httpCode){
   display.clear();
   display.setTextAlignment(TEXT_ALIGN_CENTER);
   display.setFont(ArialMT_Plain_16);
@@ -147,7 +150,17 @@ void draw_response(bool status){
   display.drawString(63, 26, "Servidor");
   display.drawString(63, 45,  String(status ? "  " : " não ") + "está ativo");
   display.display();
-  delay(3000);
+  delay(1000);
+  if(httpCode != 200){
+    display.clear();
+    display.setTextAlignment(TEXT_ALIGN_CENTER);
+    display.setFont(ArialMT_Plain_16);
+    display.drawString(63, 7, "ARduck");
+    display.drawString(63, 26, "Código de erro:");
+    display.drawString(63, 45, String(httpCode));
+    display.display();
+    delay(3000);
+  }
 }
 
 void draw_medindoTensao(){
@@ -231,7 +244,7 @@ void draw_modoEspera(){
   display.drawString(63, 26, "Inicie esta missão");
   display.drawString(63, 45, "No Aplicativo");
   display.display();
-  delay(3000);
+  delay(1000);
 }
 
 void draw_cancelar(){

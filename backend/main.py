@@ -176,4 +176,4 @@ def retrna_medida(id):
 
   return Response(json.dumps(response), status=200, mimetype="application/json")
 
-app.run(host='0.0.0.0', port=80, debug=True)
+app.run(host='0.0.0.0', port=443, debug=True)

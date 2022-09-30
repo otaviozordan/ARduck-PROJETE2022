@@ -41,11 +41,12 @@ void setup()
 
 void loop()
 {
+  ArduinoOTA.handle();
   if (!digitalRead(botao))
   { 
     draw_verificandoEstado();
       state_test();
-    draw_response(state_server);
+    draw_response(state_server, httpStatus_Global);
     if (state_server)
     {
       draw_medindoTensao();
@@ -74,5 +75,4 @@ void loop()
   {
     draw_espera();
   }
-  ArduinoOTA.handle();
 }

@@ -1,7 +1,14 @@
 //Dados de rotas
-String URL = "http://backendarduck.otaviozordan.repl.co";
+String URL = "https://arduckapi.otaviozordan.repl.co";
 String SEND_DATA_route = URL+"/tensao"; //Rota para envio de dados de tensao
 String STATE_route = URL+"/state"; //Rota para recebimento de dados de estado
+
+//Cliente HTTP e WiFi
+const char* fingerpr = "04 02 35 B9 C0 0E E5 F2 AE 94 93 3C 8D 44 4C 5B C8 E7 61 69";
+            
+WiFiClientSecure client;
+//client.connect(URL, 80);
+HTTPClient http; //Inicia cliente HTTP
 
 //Constantes de medição
 int tensao_referencia = 2800; //Tensão de referência para conversão do valor lido pelo ADC maxima.
@@ -18,9 +25,11 @@ void state_test()
     Serial.println("Enviando requisição para: " + STATE_route);
     Serial.println("Verificando estado do servidor...");
 
+    client.setFingerprint(fingerpr);
     http.begin(client, STATE_route);                    // Inicia requisição HTTP
     http.addHeader("Content-Type", "application/json"); // Adiciona cabeçalho
     int httpCode = http.GET();                          // Envia requisição GET
+    httpStatus_Global = httpCode;                       // Salva o status da requisição
     Serial.print("Status: ");                           // Exibe código de resposta
     Serial.println(httpCode);                           // Exibe código de resposta
     Serial.println("");                                 // Pula linha
@@ -63,7 +72,9 @@ void tensao_send()
     JSON += ",\"escala\": ";
     JSON += "\"mV\"}";
     Serial.println(JSON);
+    
 
+    client.setFingerprint(fingerpr);
     http.begin(client, SEND_DATA_route);                // Inicia cliente HTTP com o endereço do servidor
     http.addHeader("Content-Type", "application/json"); // Adiciona cabeçalho ao cliente HTTP
 
