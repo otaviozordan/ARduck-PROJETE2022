@@ -21,7 +21,7 @@ void draw_telainicial()
   display.setTextAlignment(TEXT_ALIGN_CENTER);
   //Seleciona a fonte
   display.setFont(ArialMT_Plain_16);
-  display.drawString(63, 10, "Projete 2022");
+  display.drawString(63, 7, "Projete 2022");
   display.drawString(63, 26, "ARduck");
   display.drawString(63, 45, "Iniciando...");
   display.display();
@@ -35,7 +35,7 @@ void draw_conectando(String ssid_stg)
   display.setTextAlignment(TEXT_ALIGN_CENTER);
   //Seleciona a fonte
   display.setFont(ArialMT_Plain_16);
-  display.drawString(63, 10, "Conectando");
+  display.drawString(63, 7, "Conectando");
   display.drawString(63, 26, "a rede:");
   display.setFont(ArialMT_Plain_10);
   display.drawString(63, 45, ssid_stg);
@@ -43,7 +43,7 @@ void draw_conectando(String ssid_stg)
   delay(500);
 }
 
-void draw_conectado(){
+void draw_conectado(String ssid_stg){
   //Mostra que o ESP está conectado ao WiFi
   display.clear();
   display.setTextAlignment(TEXT_ALIGN_CENTER);
@@ -51,7 +51,7 @@ void draw_conectado(){
   display.setFont(ArialMT_Plain_16);
   display.drawString(63, 16, "Conectado");
   display.setFont(ArialMT_Plain_10);
-  display.drawString(63, 45, ssid);
+  display.drawString(63, 45, ssid_stg);
   display.display();
   delay(3000);
   display.clear();
@@ -84,21 +84,22 @@ void draw_verificandoEstado(){
   display.setTextAlignment(TEXT_ALIGN_CENTER);
   display.setFont(ArialMT_Plain_16);
   display.drawString(63, 7, "ARduck");
-  display.drawString(63, 26, "Conectando ao");
-  display.drawString(63, 45, "Servidor");
+  display.drawString(63, 26, "Aguarde");
+  display.setFont(ArialMT_Plain_10);
+  display.drawString(63, 45, "Carregando missão");
   display.display();
   delay(1000);
 }
 
-void draw_response(bool status, int httpCode){
+void draw_response(int status, int httpCode){
   display.clear();
   display.setTextAlignment(TEXT_ALIGN_CENTER);
   display.setFont(ArialMT_Plain_16);
   display.drawString(63, 7, "ARduck");
-  display.drawString(63, 26, "Missão");
-  display.drawString(63, 45,  String(status ? "  " : " não ") + "está ativa");
+  display.drawString(63, 26, "Cicuito: "+String(status));
+  display.drawString(63, 45,  "Está ativo");
   display.display();
-  delay(1000);
+  delay(3000);
   if(httpCode != 200){
     display.clear();
     display.setTextAlignment(TEXT_ALIGN_CENTER);
@@ -131,7 +132,7 @@ void draw_tensao(int tensao){
   String tensao_str = String(tensao) + "mV";
   display.drawString(63, 45, tensao_str);
   display.display();
-  delay(4000);
+  delay(5000);
 }
 
 void draw_enviandoDados(int httpcode){
@@ -192,7 +193,7 @@ void draw_cancelar(){
   display.drawString(63, 26, "Cancelando");
   display.drawString(63, 45, "missão");
   display.display();
-  delay(200);
+  delay(1000);
 }
 
 void draw_OTA(){
@@ -203,5 +204,28 @@ void draw_OTA(){
   display.drawString(63, 26, "Atualizando");
   display.drawString(63, 45, "firmware");
   display.display();
-  delay(200);
+  delay(3000);
+}
+
+void draw_statusOff(){
+  display.clear();
+  display.setTextAlignment(TEXT_ALIGN_CENTER);
+  display.setFont(ArialMT_Plain_16);
+  display.drawString(63, 7, "ARduck");
+  display.drawString(63, 26, "Missão não");
+  display.drawString(63, 45, "Selecionada");
+  display.display();
+  delay(3000);
+}
+
+void draw_elementosMedidos(){
+  for (int i = 0; i < size; i++)
+  {
+    display.clear();
+    display.drawString(63, 7, "ARduck");
+    display.drawString(63, 26, "Medido:");
+    display.drawString(63, 45, elementosList[i]);
+    display.display();
+    delay(3000);
+  }
 }

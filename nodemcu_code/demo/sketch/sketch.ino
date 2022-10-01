@@ -35,7 +35,7 @@ void setup()
   draw_conectando(ssid);
     conectarWiFI();
     OTA_Conection();
-  draw_conectado();
+  draw_conectado(ssid);
   draw_ip(IP);
 }
 
@@ -47,31 +47,35 @@ void loop()
     draw_verificandoEstado();
       state_test();
     draw_response(state_server, httpStatus_Global);
-    if (state_server)
+    if (state_server!=0)
     {
       draw_medindoTensao();
         tensao_send();
       draw_tensao(tensao);
       draw_enviandoDados(httpStatus_Global);
+        elementos_import(state_server);
+      draw_elementosMedidos();
     }
     else
     {
       Serial.println("Servidor indisponível");
       Serial.println("Inicializando modo de espera, inicialize modo de medicao para continuar");
       Serial.println("");
+      draw_statusOff();
       do
       {
         draw_verificandoEstado();
           state_test();
+        draw_response(state_server, httpStatus_Global);
+        if (state_server!=0)
+        {
+          return;
+        }
         if(!botao){
           draw_cancelar();
           break;
         }
-        if (state_server)
-        {
-          return;
-        }
-      } while (!state_server);
+      } while (state_server==0);
     }
   }
   else

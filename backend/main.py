@@ -1,13 +1,7 @@
 from flask import Flask, Response, request
 import json
-import os
-
-from sqlalchemy import null
 
 app = Flask(__name__)
-
-os.system("python3 ")
-
 
 #declara variavel para tensão medida
 global tensao
@@ -15,6 +9,7 @@ tensao = 0
 
 #status da medição
 global state
+state = 0
 
 #tolerancia do circuito de medição (%)
 global tolmax
@@ -26,7 +21,7 @@ def zerar():
 
 @app.route("/", methods=["GET"])
 def index():
-  return ler_tensao()
+  return  Response(json.dumps({"Hello":"ARduck"}), status=200, mimetype="application/json")
 
 @app.route("/routes", methods=["GET"])
 def routes():
@@ -43,12 +38,11 @@ def routes():
 
 @app.route("/start/<id>", methods=["GET"])
 def start(id):
-
   response = {}
   response["status"] = "on"
-  response["Circuito"] = id
+  response["circuito"] = int(id)
   global state
-  state = id
+  state = int(id)
 
   print("")
   print("Missão circuito ", id, " iniciada")
@@ -80,7 +74,7 @@ def state():
     return Response(json.dumps(response), status=200, mimetype="application/json")
 
   except:
-    return Response(json.dumps({"status":False}), status=200, mimetype="application/json")
+    return Response(json.dumps({"status":0}), status=200, mimetype="application/json")
 
 @app.route("/tensao", methods=["POST"])
 def cadastrar_tensao():
