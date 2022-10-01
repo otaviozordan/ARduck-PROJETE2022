@@ -224,7 +224,7 @@ void draw_elementosMedidos(){
     display.clear();
     display.drawString(63, 7, "ARduck");
     display.drawString(63, 26, "Medido:");
-    display.drawString(63, 45, elementosList[i]);
+    display.drawString(63, 45, String(elementosList[i]));
     display.display();
     delay(3000);
   }

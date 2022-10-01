@@ -14,7 +14,7 @@ HTTPClient http; //Inicia cliente HTTP
 //Variaveis de saida
 int httpStatus_Global;  //Variavel de status de resposta do servidor
 int state_server; //Variavel do numero do circuito
-char *elementosList[]; //Array de elementos
+char* elementosList; //Array de elementos
 int size; //Tamanho do array de elementos
 
 //Constantes de medição
