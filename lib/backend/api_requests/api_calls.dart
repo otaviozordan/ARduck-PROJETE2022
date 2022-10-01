@@ -6,11 +6,24 @@ export 'api_manager.dart' show ApiCallResponse;
 
 const _kPrivateApiFunctionName = 'ffPrivateApiCall';
 
-class TensaoCall {
+class TensoesCall {
   static Future<ApiCallResponse> call() {
     return ApiManager.instance.makeApiCall(
-      callName: 'Tensao',
-      apiUrl: 'https://9d66-2804-d45-88b9-eb00-4051-e552-eeb2-ebcf.sa.ngrok.io',
+      callName: 'Tensoes',
+      apiUrl: 'https://arduckapi.otaviozordan.repl.co/circuito/1',
+      callType: ApiCallType.GET,
+      headers: {},
+      params: {},
+      returnBody: true,
+    );
+  }
+}
+
+class StartCall {
+  static Future<ApiCallResponse> call() {
+    return ApiManager.instance.makeApiCall(
+      callName: 'Start',
+      apiUrl: 'https://arduckapi.otaviozordan.repl.co/start/1',
       callType: ApiCallType.GET,
       headers: {},
       params: {},

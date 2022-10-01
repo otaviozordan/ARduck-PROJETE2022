@@ -2,7 +2,6 @@ import '../esquematico_resistores/esquematico_resistores_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../home_screen/home_screen_widget.dart';
-import '../log_out/log_out_widget.dart';
 import '../quiz_1_resistores/quiz1_resistores_widget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:expandable/expandable.dart';
@@ -245,12 +244,8 @@ class _ResistoresWidgetState extends State<ResistoresWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                           child: InkWell(
                             onTap: () async {
-                              await Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => LogOutWidget(),
-                                ),
-                              );
+                              await launchURL(
+                                  'https://drive.google.com/drive/folders/1t-b9nVzf2T4gUn-NECSN4eLI-KTAwu7Y?usp=sharing');
                             },
                             child: Container(
                               width: 160,

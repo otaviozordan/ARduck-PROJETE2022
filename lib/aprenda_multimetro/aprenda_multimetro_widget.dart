@@ -331,62 +331,6 @@ class _AprendaMultimetroWidgetState extends State<AprendaMultimetroWidget> {
                       decoration: BoxDecoration(
                         color: Color(0xFF161616),
                       ),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
-                        child: Container(
-                          width: double.infinity,
-                          color: Color(0xFF161616),
-                          child: ExpandableNotifier(
-                            initialExpanded: false,
-                            child: ExpandablePanel(
-                              header: Text(
-                                'Funcionalidades',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyText1
-                                    .override(
-                                      fontFamily: 'Poppins',
-                                      color: Colors.white,
-                                    ),
-                              ),
-                              collapsed: Container(
-                                width: MediaQuery.of(context).size.width,
-                                decoration: BoxDecoration(
-                                  color: Color(0xFF161616),
-                                ),
-                                child: Text(
-                                  'O borne de conexão “COM” é onde a sonda preta...',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyText2
-                                      .override(
-                                        fontFamily: 'Poppins',
-                                        color: Color(0xFF57636C),
-                                        fontWeight: FontWeight.normal,
-                                      ),
-                                ),
-                              ),
-                              expanded: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Text(
-                                    'O borne de conexão “COM” é onde a sonda preta deve ser conectada. A sonda COM é convencionalmente preta.\n10A é usado ao medir grandes correntes, maiores que 200mA\nµAmA é usado para medir a corrente\nVΩ permite medir tensão e resistência e testar a continuidade\n \nOBS: Esses bornes de conexão podem variar dependendo do multímetro que você está usando.',
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyText2,
-                                  ),
-                                ],
-                              ),
-                              theme: ExpandableThemeData(
-                                tapHeaderToExpand: true,
-                                tapBodyToExpand: false,
-                                tapBodyToCollapse: false,
-                                headerAlignment:
-                                    ExpandablePanelHeaderAlignment.center,
-                                hasIcon: true,
-                                iconColor: Colors.white,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
                     ),
                   ),
                 ],

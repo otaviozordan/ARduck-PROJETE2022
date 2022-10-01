@@ -3,7 +3,7 @@ import '../aprenda/aprenda_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../fonte_retificadora/fonte_retificadora_widget.dart';
-import '../not_found/not_found_widget.dart';
+import '../game_choice/game_choice_widget.dart';
 import '../resistores/resistores_widget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -742,7 +742,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                         context,
                                         MaterialPageRoute(
                                           builder: (context) =>
-                                              NotFoundWidget(),
+                                              GameChoiceWidget(),
                                         ),
                                       );
                                     },
@@ -755,7 +755,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                         image: DecorationImage(
                                           fit: BoxFit.cover,
                                           image: Image.asset(
-                                            'assets/images/image_2022-09-11_181004491.png',
+                                            'assets/images/image_2022-10-01_082859908.png',
                                           ).image,
                                         ),
                                         boxShadow: [
@@ -777,27 +777,48 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                           children: [
                                             Padding(
                                               padding: EdgeInsetsDirectional
-                                                  .fromSTEB(0, 200, 0, 0),
+                                                  .fromSTEB(0, 170, 0, 0),
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: [
                                                   Expanded(
                                                     child: Text(
-                                                      'Nosso site',
+                                                      'Missões',
                                                       textAlign:
-                                                          TextAlign.center,
+                                                          TextAlign.start,
                                                       style: FlutterFlowTheme
                                                               .of(context)
                                                           .subtitle1
                                                           .override(
-                                                            fontFamily:
-                                                                'Poppins',
+                                                            fontFamily: 'Inter',
                                                             color: Colors.white,
                                                           ),
                                                     ),
                                                   ),
                                                 ],
                                               ),
+                                            ),
+                                            Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Expanded(
+                                                  child: Text(
+                                                    'Faça os desafios, aprenda e divirta-se.',
+                                                    textAlign: TextAlign.start,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyText2
+                                                        .override(
+                                                          fontFamily: 'Poppins',
+                                                          color:
+                                                              Color(0xFFD9D9D9),
+                                                          fontSize: 10,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ],
                                             ),
                                           ],
                                         ),

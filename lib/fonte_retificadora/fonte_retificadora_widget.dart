@@ -216,28 +216,34 @@ class _FonteRetificadoraWidgetState extends State<FonteRetificadoraWidget> {
               children: [
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
-                  child: Container(
-                    width: 160,
-                    height: 160,
-                    decoration: BoxDecoration(
-                      color: Color(0xFF161616),
-                      image: DecorationImage(
-                        fit: BoxFit.cover,
-                        image: Image.asset(
-                          'assets/images/image_2022-09-04_103521836.png',
-                        ).image,
+                  child: InkWell(
+                    onTap: () async {
+                      await launchURL(
+                          'https://drive.google.com/drive/folders/1t-b9nVzf2T4gUn-NECSN4eLI-KTAwu7Y?usp=sharing');
+                    },
+                    child: Container(
+                      width: 160,
+                      height: 160,
+                      decoration: BoxDecoration(
+                        color: Color(0xFF161616),
+                        image: DecorationImage(
+                          fit: BoxFit.cover,
+                          image: Image.asset(
+                            'assets/images/image_2022-09-04_103521836.png',
+                          ).image,
+                        ),
+                        borderRadius: BorderRadius.circular(24),
                       ),
-                      borderRadius: BorderRadius.circular(24),
-                    ),
-                    child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(7, 120, 0, 0),
-                      child: Text(
-                        'Realidade Aumentada',
-                        style: FlutterFlowTheme.of(context).title2.override(
-                              fontFamily: 'Poppins',
-                              color: Colors.white,
-                              fontSize: 12,
-                            ),
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(7, 120, 0, 0),
+                        child: Text(
+                          'Realidade Aumentada',
+                          style: FlutterFlowTheme.of(context).title2.override(
+                                fontFamily: 'Poppins',
+                                color: Colors.white,
+                                fontSize: 12,
+                              ),
+                        ),
                       ),
                     ),
                   ),

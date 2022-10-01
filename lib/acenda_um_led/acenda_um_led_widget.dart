@@ -211,7 +211,8 @@ class _AcendaUmLedWidgetState extends State<AcendaUmLedWidget> {
                   padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                   child: InkWell(
                     onTap: () async {
-                      await launchURL('');
+                      await launchURL(
+                          'https://drive.google.com/drive/folders/1t-b9nVzf2T4gUn-NECSN4eLI-KTAwu7Y?usp=sharing');
                     },
                     child: Container(
                       width: 160,

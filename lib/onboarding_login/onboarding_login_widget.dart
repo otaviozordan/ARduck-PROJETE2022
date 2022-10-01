@@ -185,7 +185,7 @@ class _OnboardingLoginWidgetState extends State<OnboardingLoginWidget> {
                             children: [
                               Lottie.asset(
                                 'assets/lottie_animations/107448-human-in-vr-glasses-in-metaverse_(1).json',
-                                width: 275,
+                                width: 360,
                                 height: 300,
                                 fit: BoxFit.cover,
                                 animate: true,

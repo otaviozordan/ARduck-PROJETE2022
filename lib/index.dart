@@ -6,10 +6,10 @@ export 'registro_page/registro_page_widget.dart' show RegistroPageWidget;
 export 'home_screen/home_screen_widget.dart' show HomeScreenWidget;
 export 'aprenda/aprenda_widget.dart' show AprendaWidget;
 export 'resistores/resistores_widget.dart' show ResistoresWidget;
-export 'esquematico_resistores/esquematico_resistores_widget.dart'
-    show EsquematicoResistoresWidget;
 export 'quiz_1_resistores/quiz1_resistores_widget.dart'
     show Quiz1ResistoresWidget;
+export 'esquematico_resistores/esquematico_resistores_widget.dart'
+    show EsquematicoResistoresWidget;
 export 'acerto_quiz/acerto_quiz_widget.dart' show AcertoQuizWidget;
 export 'erro_quiz/erro_quiz_widget.dart' show ErroQuizWidget;
 export 'quiz_2_resistores/quiz2_resistores_widget.dart'
@@ -34,3 +34,8 @@ export 'aprenda_multimetro/aprenda_multimetro_widget.dart'
     show AprendaMultimetroWidget;
 export 'not_found/not_found_widget.dart' show NotFoundWidget;
 export 'log_out/log_out_widget.dart' show LogOutWidget;
+export 'quiz_a_p_i/quiz_a_p_i_widget.dart' show QuizAPIWidget;
+export 'game_choice/game_choice_widget.dart' show GameChoiceWidget;
+export 'tolerancia_resistores/tolerancia_resistores_widget.dart'
+    show ToleranciaResistoresWidget;
+export 'resistores_game/resistores_game_widget.dart' show ResistoresGameWidget;

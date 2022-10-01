@@ -81,13 +81,11 @@ class _MyAppState extends State<MyApp> {
       themeMode: _themeMode,
       home: initialUser == null || displaySplashImage
           ? Builder(
-              builder: (context) => Center(
-                child: SizedBox(
-                  width: 50,
-                  height: 50,
-                  child: CircularProgressIndicator(
-                    color: Color(0xFFFF7955),
-                  ),
+              builder: (context) => Container(
+                color: Color(0xFF161616),
+                child: Image.asset(
+                  'assets/images/image_2022-10-01_102601450.png',
+                  fit: BoxFit.cover,
                 ),
               ),
             )

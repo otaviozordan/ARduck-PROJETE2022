@@ -1,6 +1,5 @@
 import 'package:built_value/standard_json_plugin.dart';
 
-import 'medidas_record.dart';
 import 'users_record.dart';
 
 import 'index.dart';
@@ -12,7 +11,6 @@ part 'serializers.g.dart';
 const kDocumentReferenceField = 'Document__Reference__Field';
 
 @SerializersFor(const [
-  MedidasRecord,
   UsersRecord,
 ])
 final Serializers serializers = (_$serializers.toBuilder()
