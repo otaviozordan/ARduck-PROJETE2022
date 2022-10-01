@@ -3,6 +3,9 @@ String URL = "https://arduckapi.otaviozordan.repl.co";
 String SEND_DATA_route = URL+"/tensao"; //Rota para envio de dados de tensao
 String STATE_route = URL+"/state"; //Rota para recebimento de dados de estado
 
+String id = "1";
+String CIRCUITO_route = URL+"/circuito/"+id;
+
 //Cliente HTTP e WiFi
 const char* fingerpr = "04 02 35 B9 C0 0E E5 F2 AE 94 93 3C 8D 44 4C 5B C8 E7 61 69";
             
@@ -100,6 +103,44 @@ void tensao_send()
         http.end();
         Serial.println("Erro ao enviar requisição");
         Serial.println("");
+        return;
+    }
+}
+
+void get_elementos(){
+    Serial.println("Enviando requisição para: " + CIRCUITO_route);
+    Serial.println("Verificando elementos medios...");
+
+    client.setFingerprint(fingerpr);
+    http.begin(client, CIRCUITO_route);                 // Inicia requisição HTTP
+    http.addHeader("Content-Type", "application/json"); // Adiciona cabeçalho
+    int httpCode = http.GET();                          // Envia requisição GET
+    httpStatus_Global = httpCode;                       // Salva o status da requisição
+    Serial.print("Status: ");                           // Exibe código de resposta
+    Serial.println(httpCode);                           // Exibe código de resposta
+    Serial.println("");                                 // Pula linha
+
+    if (httpCode == HTTP_CODE_OK)
+    {
+        String payload = http.getString();     // Recebe resposta do servidor
+        http.end();                            // Finaliza requisição
+        Serial.println(payload);               // Exibe resposta do servidor
+        deserializeJson(doc, payload);         // Deserializa JSON
+        JsonObject obj = doc.as<JsonObject>(); // Converte JSON para objeto
+        state_server = obj["status"];          // Atribui valor de status do servidor a variável
+        Serial.println("Request realizada com sucesso: " + String(state_server));
+        Serial.println("Servidor" + String(state_server ? "  " : " não ") + "está ativo"); // Exibe status do servidor
+        Serial.println("");
+        delay(1000);
+    }
+    else
+    {
+        String payload = http.getString();     // Recebe resposta do servidor
+        http.end();                            // Finaliza requisição
+        Serial.println(payload);   
+        Serial.println("Erro ao enviar requisição");
+        Serial.println("");
+        state_server = true;
         return;
     }
 }

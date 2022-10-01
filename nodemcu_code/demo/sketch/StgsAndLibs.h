@@ -4,8 +4,8 @@
 #include <WiFiClientSecure.h> 
 
 //Dados do WiFi
-const char* ssid = "ARduck - PROJETE 2022";
-const char* password = "DebugDuck";
+const char* ssid = "TP-Link_52EB";
+const char* password = "15712981";
 
 //Endereço IP
 String IP;

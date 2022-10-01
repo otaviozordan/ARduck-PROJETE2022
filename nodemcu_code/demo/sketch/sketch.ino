@@ -61,12 +61,15 @@ void loop()
       Serial.println("");
       do
       {
-        draw_modoEspera();
         draw_verificandoEstado();
           state_test();
         if(!botao){
           draw_cancelar();
           break;
+        }
+        if (state_server)
+        {
+          return;
         }
       } while (!state_server);
     }

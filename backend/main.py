@@ -1,7 +1,13 @@
 from flask import Flask, Response, request
 import json
+import os
+
+from sqlalchemy import null
 
 app = Flask(__name__)
+
+os.system("python3 ")
+
 
 #declara variavel para tensão medida
 global tensao
@@ -9,11 +15,14 @@ tensao = 0
 
 #status da medição
 global state
-state = False
 
 #tolerancia do circuito de medição (%)
 global tolmax
 tolmax = 15
+
+def zerar():
+  global tensao
+  tensao = 0
 
 @app.route("/", methods=["GET"])
 def index():
@@ -22,40 +31,41 @@ def index():
 @app.route("/routes", methods=["GET"])
 def routes():
   response = {}
+  response["Inicia leitura de tensao na missão"] = "/start/<id> [GET]"
+  response["Estado da missão"] = "/state [GET]"
+  response["Indentifica medida no circuito"] = "/circuito/<id> [GET]"
+  response["Para missão"] = "/stop [GET]"
   response["Cadastrar valor para tensao"] = "/tensao [POST]"
   response["Ler valor de tensao"] = "/tensao [GET]"
-  response["Inicia leitura de tensao"] = "/start [GET]"
-  response["Para leitura de tensao"] = "/stop [GET]"
-  response["Estado atual do servidor"] = "/state [GET]"
-  response["Indentifica medida no circuito"] = "/circuito/<id> [GET]"
+
 
   return Response(json.dumps(response), status=200, mimetype="application/json")
 
-@app.route("/start", methods=["GET"])
-def start():
+@app.route("/start/<id>", methods=["GET"])
+def start(id):
+
   response = {}
   response["status"] = "on"
+  response["Circuito"] = id
   global state
-  state = True
+  state = id
 
   print("")
-  print("Start Server")
+  print("Missão circuito ", id, " iniciada")
 
   return Response(json.dumps(response), status=200, mimetype="application/json")
-
 
 @app.route("/stop", methods=["GET"])
 def stop():
   response = {}
   response["status"] = "off"
   global state
-  state = False
+  state = 0
 
   print("")
-  print("Stop Server")
+  print("Missão terminada")
 
   return Response(json.dumps(response), status=200, mimetype="application/json")
-
 
 @app.route("/state", methods=["GET"])
 def state():
@@ -63,7 +73,7 @@ def state():
   response["status"] = state
 
   print("")
-  print("State Server", end=" ")
+  print("Medindo circuito", end=" ")
   print(state)
 
   try:
@@ -71,7 +81,6 @@ def state():
 
   except:
     return Response(json.dumps({"status":False}), status=200, mimetype="application/json")
-
 
 @app.route("/tensao", methods=["POST"])
 def cadastrar_tensao():
@@ -106,7 +115,7 @@ def ler_tensao():
   response["tensao_int"] = tensao
 
   print("")
-  print("Servidor fazendo  leitura:", end=" ")
+  print("Cliente lendo tensão:", end=" ")
   print(tensao, end="")
   print("[mV]")
 
@@ -130,7 +139,7 @@ def retrna_medida(id):
   data = json.load(file)
 
   for i in data['resistores']:
-    print(i["name"])
+    print("Testando: ", i["name"])
     Vresistor = (i['tensao'])
     Vresistormax = Vresistor + Vresistor*tolmax/100
     Vresistormin = Vresistor - Vresistor*tolmax/100
@@ -148,6 +157,7 @@ def retrna_medida(id):
   Vfonte = data["dados do circuito"][1]["value"]
   Vfontemax = Vfonte + Vfonte*tolmax/100
   Vfontemin = Vfonte - Vfonte*tolmax/100  
+
   if(Vfontemax > tensao > Vfontemin ):
       nameFonte = data["dados do circuito"][1]["name"]
       print("Encontrado", end=" ")
@@ -158,15 +168,12 @@ def retrna_medida(id):
       VelementomaxAnterior = Vfontemax
       VelementominAnterior = Vfontemin
 
-
   if(len(listaElementos) == 0):
-    nameResistor = "Elemento nao encontrado"
+    nameResistor = "Não encontrado"
     listaElementos.append(nameResistor)
     VelementoAnterior = "Indefinido"
     VelementomaxAnterior = "Indefinido"
     VelementominAnterior = "Indefinido"
-
-  print("Elementos: ", listaElementos)
 
   response["elemento"] = listaElementos
   response["tensao medida"] = tensao
@@ -174,6 +181,13 @@ def retrna_medida(id):
   response["tensao maxima aceitavel"] = VelementomaxAnterior
   response["tensao minima aceitavel"] = VelementominAnterior
 
-  return Response(json.dumps(response), status=200, mimetype="application/json")
+  if (tensao == 0):
+    listaElementos=[]
+    listaElementos.append("Meça a tensão!")
+    response["elemento"] = listaElementos
+    print("Medida não realizada")
 
-app.run(host='0.0.0.0', port=443, debug=True)
+  print(json.dumps(response))
+  return Response(json.dumps(response), status=200, mimetype="application/json"), zerar()
+
+app.run(host='0.0.0.0', port=80, debug=True)
