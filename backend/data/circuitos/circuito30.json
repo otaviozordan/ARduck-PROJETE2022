@@ -5,39 +5,30 @@
             "type": "Serie"
         },
         {
-            "name": "Vtotal (VCC)",
+            "name": "Vtotal (Vcc)",
             "value": 5000
         },
         {
             "name": "Rtotal",
-            "value": 2830
+            "value": 2000
         },
         {
             "name": "Itotal",
-            "value": 1.7667844522968197
+            "value": 2.5
         }
     ],
     "resistores": [
         {
-            "id": 1,
             "name": "R1",
-            "value": 330,
+            "value": 1000,
             "tolerance": 5,
-            "tensao": 583.0388692579505
+            "tensao": 2500.0
         },
         {
-            "id": 2,
             "name": "R2",
             "value": 1000,
             "tolerance": 5,
-            "tensao": 1766.7844522968196
-        },
-        {
-            "id": 3,
-            "name": "R3",
-            "value": 1500,
-            "tolerance": 5,
-            "tensao": 2650.1766784452298
+            "tensao": 2500.0
         }
     ]
 }

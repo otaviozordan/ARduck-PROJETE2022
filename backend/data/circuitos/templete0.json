@@ -21,12 +21,6 @@
             "name": "R2",
             "value": 1000,
             "tolerance": 5
-        },
-        {
-            "id": "...",
-            "name": "...",
-            "value": "...",
-            "tolerance": "..."
         }
     ]
 }
