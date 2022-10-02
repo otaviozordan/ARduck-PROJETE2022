@@ -69,7 +69,7 @@ void tensao_send()
 
     // Prepara payload para envio
     medida = analogRead(A0) / 1023.0 * tensao_referencia;
-    tensao = map(medida, 0, tensao_referencia, 0, 5);
+    tensao = map(medida, 0, tensao_referencia, 0, 5000);
     String JSON;
     JSON = "{\"tensao\":";
     JSON += tensao;

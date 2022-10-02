@@ -45,37 +45,28 @@ void loop()
   if (!digitalRead(botao))
   {
     draw_verificandoEstado();
+    state_test();
+    while (state_server == 0) //Espera inicio da missão
+    {
+      draw_statusOff();
+      draw_verificandoEstado();
       state_test();
-    draw_response(state_server, httpStatus_Global);
-    if (state_server != 0)
-    {
-      draw_medindoTensao();
-        tensao_send();
-      draw_tensao(tensao);
-      draw_enviandoDados(httpStatus_Global);
-        elementos_import(state_server);
-      draw_elementosMedidos();
-    }
-    else
-    {
-      while (state_server == 0)
-      {
-        draw_statusOff();
-        draw_verificandoEstado();
-          state_test();
-        if (httpStatus_Global != 200) {
-          draw_response(state_server, httpStatus_Global);
-        }
-        if (!digitalRead(botao)) {
-          draw_cancelar();
-          delay(1000);
-          break;
-        }
+      if (httpStatus_Global != 200) {
+        draw_response(state_server, httpStatus_Global);
+      }
+      if (!digitalRead(botao)) {
+        draw_cancelar();
+        delay(1000);
+        break;
       }
     }
+    draw_response(state_server, httpStatus_Global);
+    draw_medindoTensao();
+    tensao_send();
+    draw_tensao(tensao); 
+    draw_enviandoDados(httpStatus_Global);
+    elementos_import(state_server);
+    draw_elementosMedidos();
   }
-  else
-  {
-    draw_espera();
-  }
+  draw_espera();
 }

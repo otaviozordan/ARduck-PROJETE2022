@@ -1,14 +1,14 @@
 //Biblioteca para utilização do ESP8266
 #include <ESP8266HTTPClient.h>
 #include <ESP8266WiFi.h>
+#include <WiFiClientSecure.h> 
 
 //Dados do WiFi
-const char* ssid = "ARduck - PROJETE 2022";
-const char* password = "DebugDuck";
+const char* ssid = "OTAVIO E OLAVO 2.4G";
+const char* password = "olavo1011";
 
-//Cliente HTTP e WiFi
-WiFiClient client; //Cria um cliente para conexão com o servidor
-HTTPClient http; //Inicia cliente HTTP
+//Endereço IP
+String IP;
 
 //Biblioteca para trabalho com JSON
 #include <ArduinoJson.h>
@@ -31,13 +31,14 @@ void conectarWiFI(){
     digitalWrite(led, HIGH);
     delay(250);
     digitalWrite(led, LOW);
-    delay(250);
-    Serial.print(".");
+    delay(250); 
   }
   Serial.println("");
   Serial.print("Connectado a ");
   Serial.println(ssid); 
   Serial.print("IP address: ");
+
+  IP = WiFi.localIP().toString();
   Serial.println(WiFi.localIP()); //Exibe IP do ESP8266
   Serial.println("");
 }

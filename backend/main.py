@@ -219,6 +219,6 @@ def cadastrar_circuito(id):
     return Response(json.dumps(circuitoJson), status=200, mimetype="application/json")
   
   except:
-    return Response(json.dumps({"Erro ao cadastrar":"Aguarde atualizações"}), status=400, mimetype="application/json")
+    return Response(json.dumps({"Erro ao cadastrar":"Envie um Json valido"}), status=400, mimetype="application/json")
 
 app.run(host='0.0.0.0', port=80, debug=True)

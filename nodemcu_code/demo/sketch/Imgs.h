@@ -185,15 +185,14 @@ void draw_cancelar(){
   delay(1000);
 }
 
-void draw_OTA(){
+void draw_OTA(int progresso, int total){
   display.clear();
   display.setTextAlignment(TEXT_ALIGN_CENTER);
   display.setFont(ArialMT_Plain_16);
   display.drawString(63, 7, "ARduck");
-  display.drawString(63, 26, "Atualizando");
-  display.drawString(63, 45, "firmware");
+  display.drawString(63, 26, "Atualizando firmware");
+  display.drawString(63, 45, String((progresso / (total / 100))));
   display.display();
-  delay(3000);
 }
 
 void draw_statusOff(){
