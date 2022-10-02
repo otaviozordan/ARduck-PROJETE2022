@@ -96,7 +96,7 @@ void draw_response(int status, int httpCode){
   display.setTextAlignment(TEXT_ALIGN_CENTER);
   display.setFont(ArialMT_Plain_16);
   display.drawString(63, 7, "ARduck");
-  display.drawString(63, 26, "Cicuito: "+String(status));
+  display.drawString(63, 26, String(status)== "0" ? "Cicuito não" : "Circuito: " + String(status));
   display.drawString(63, 45,  "Está ativo");
   display.display();
   delay(3000);
@@ -151,7 +151,7 @@ void draw_enviandoDados(int httpcode){
     display.setFont(ArialMT_Plain_16);
     display.drawString(63, 7, "Dados enviados");
     display.drawString(63, 26, "com sucesso");
-    display.drawString(63, 45, "Verifique no App");
+    display.drawString(63, 45, String(tensao) + "mV");
     display.display();
     delay(3000);
     display.clear();
@@ -174,24 +174,13 @@ void draw_enviandoDados(int httpcode){
   }
 }
 
-void draw_servidorInativo(){
-  display.clear();
-  display.setTextAlignment(TEXT_ALIGN_CENTER);
-  display.setFont(ArialMT_Plain_16);
-  display.drawString(63, 7, "ARduck");
-  display.drawString(63, 26, "Missão não selecionada");
-  display.drawString(63, 45, "Inicie uma missão");
-  display.display();
-  delay(3000);
-}
-
 void draw_cancelar(){
   display.clear();
   display.setTextAlignment(TEXT_ALIGN_CENTER);
   display.setFont(ArialMT_Plain_16);
   display.drawString(63, 7, "ARduck");
   display.drawString(63, 26, "Cancelando");
-  display.drawString(63, 45, "missão");
+  display.drawString(63, 45, "Busca");
   display.display();
   delay(1000);
 }
@@ -208,6 +197,9 @@ void draw_OTA(){
 }
 
 void draw_statusOff(){
+  Serial.println("Servidor indisponível");
+  Serial.println("Inicializando modo de espera, inicialize modo de medicao para continuar");
+  Serial.println("");
   display.clear();
   display.setTextAlignment(TEXT_ALIGN_CENTER);
   display.setFont(ArialMT_Plain_16);

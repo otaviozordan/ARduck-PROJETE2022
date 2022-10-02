@@ -1,9 +1,8 @@
-{   
-    "dados do circuito":
-    [
+{
+    "dados do circuito": [
         {
-            "name":"Tipo",
-            "type":"Serie"
+            "name": "Tipo",
+            "type": "Serie"
         },
         {
             "name": "Vtotal (VCC)",
@@ -15,32 +14,30 @@
         },
         {
             "name": "Itotal",
-            "value": 0.001765
+            "value": 1.7667844522968197
         }
     ],
-    "resistores":
-    [
+    "resistores": [
         {
             "id": 1,
             "name": "R1",
             "value": 330,
             "tolerance": 5,
-            "tensao": 582
+            "tensao": 583.0388692579505
         },
         {
             "id": 2,
             "name": "R2",
             "value": 1000,
             "tolerance": 5,
-            "tensao": 1765
-
+            "tensao": 1766.7844522968196
         },
         {
             "id": 3,
             "name": "R3",
             "value": 1500,
             "tolerance": 5,
-            "tensao": 2647
+            "tensao": 2650.1766784452298
         }
     ]
 }

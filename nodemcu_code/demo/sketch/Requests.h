@@ -133,7 +133,7 @@ void elementos_import(int circuito)
 
         for (size = 0; size < obj["elementos"].size(); size++)
         {
-            elementosList[size] = (obj["elemento"][size]);          // Atribui valor de status do servidor a variável
+            elementosList[size] = (obj["elemento"][size]); //Adiciona elementos ao array
         }
     }
     else

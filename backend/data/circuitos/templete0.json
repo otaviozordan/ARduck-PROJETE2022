@@ -1,0 +1,32 @@
+{
+    "dados do circuito": [
+        {
+            "name": "Tipo",
+            "type": "Serie"
+        },
+        {
+            "name": "Vtotal (Vcc)",
+            "value": 5000
+        }
+    ],
+    "resistores": [
+        {
+            "id": 1,
+            "name": "R1",
+            "value": 1000,
+            "tolerance": 5
+        },
+        {
+            "id": 2,
+            "name": "R2",
+            "value": 1000,
+            "tolerance": 5
+        },
+        {
+            "id": "...",
+            "name": "...",
+            "value": "...",
+            "tolerance": "..."
+        }
+    ]
+}

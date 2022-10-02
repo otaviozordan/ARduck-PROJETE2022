@@ -21,15 +21,17 @@ def zerar():
 
 @app.route("/", methods=["GET"])
 def index():
-  return  Response(json.dumps({"Hello":"ARduck"}), status=200, mimetype="application/json")
+  return  Response(json.dumps({"Hello":"ARduck", "Tente:":"URL + /routes"}), status=200, mimetype="application/json")
 
 @app.route("/routes", methods=["GET"])
 def routes():
   response = {}
   response["Inicia leitura de tensao na missão"] = "/start/<id> [GET]"
-  response["Estado da missão"] = "/state [GET]"
-  response["Indentifica medida no circuito"] = "/circuito/<id> [GET]"
+  response["Visualiza circuito sendo executado"] = "/state [GET]"
   response["Para missão"] = "/stop [GET]"
+  response["Indentifica elemento medido no circuito"] = "/circuito/<id> [GET]"
+  response["Cadastra novo circuito"] = "/circuito/id [POST]"
+  response["Templete de como cadastrar um novo circuito"] = "/templete [GET]"
   response["Cadastrar valor para tensao"] = "/tensao [POST]"
   response["Ler valor de tensao"] = "/tensao [GET]"
 
@@ -115,21 +117,20 @@ def ler_tensao():
 
   return Response(json.dumps(response), status=200, mimetype="application/json")
 
-@app.route("/circuito", methods=["GET"])
-def lista_circuitos():
-  response = {}
-  response["Erro, informe: "] = "/circuito/<id>"
+@app.route("/templete", methods=["GET"])
+def templete_newCircuito():
+  response = open('backend\data\circuitos\\templete0.json')
   return Response(json.dumps(response), status=200, mimetype="application/json")
 
 @app.route("/circuito/<id>", methods=["GET"])
-def retrna_medida(id):
+def medir_elemento(id):
   response = {}
   listaElementos = []
   global VresistorAnterior 
   global VresistormaxAnterior 
   global VresistorminAnterior
 
-  file = open('backend\data\circuito' + id + '.json')
+  file = open('backend\data\circuitos\circuito' + id + '.json')
   data = json.load(file)
 
   for i in data['resistores']:
@@ -183,5 +184,41 @@ def retrna_medida(id):
 
   print(json.dumps(response))
   return Response(json.dumps(response), status=200, mimetype="application/json"), zerar()
+
+@app.route("/circuito/<id>", methods=["POST"])
+def cadastrar_circuito(id):
+  Rtotal = 0 #resistencia total do circuito
+  Itotal = 0 #corrente total do circuito
+  inputCircuito = request.get_json() #recebe o json de input circuito
+
+  with open("backend\data\circuitos\circuito" + id + ".json", "w") as circuitoJsonArquivo: #cria um arquivo json com o nome do circuito
+    circuitoJson = {} #cria um dicionario para o json de saida
+    circuitoJson["dados do circuito"] = inputCircuito["dados do circuito"] #copia os dados do circuito para o json de saida
+    circuitoJson["resistores"] = inputCircuito["resistores"] #copia os resistores para o json de saida
+
+    circuitoJson["dados do circuito"].append({"name": "Rtotal"}) #adiciona a corrente total ao json de saida
+
+    if(inputCircuito["dados do circuito"][0]["type"] == "Serie"): #se o circuito for em serie
+      for i in range(0, len(inputCircuito["resistores"])):
+        RtotalIndividual = inputCircuito["resistores"][i]["value"] #pega o valor de cada resistor
+        Rtotal = Rtotal + RtotalIndividual #soma as resistencias individuais uma a uma
+      circuitoJson["dados do circuito"][2]["value"] = Rtotal #adiciona o valor da resistencia total
+  
+    circuitoJson["dados do circuito"].append({"name": "Itotal"}) #adiciona a corrente total ao json de saida
+  
+    Itotal = inputCircuito["dados do circuito"][1]["value"] / Rtotal #calcula a corrente total importando a tensao e a resistencia total calculada
+    circuitoJson["dados do circuito"][3]["value"] = Itotal #adiciona o valor da corrente total ao json de saida
+
+    if(inputCircuito["dados do circuito"][0]["type"] == "Serie"):
+      for i in range(0, len(inputCircuito["resistores"])):
+        circuitoJson["resistores"][i]["tensao"] = inputCircuito["resistores"][i]["value"] * Itotal #calcula a tensao em cada resistor e adiciona ao json de saida
+
+    json.dump(circuitoJson, circuitoJsonArquivo, indent=4)
+
+  try:
+    return Response(json.dumps(circuitoJson), status=200, mimetype="application/json")
+  
+  except:
+    return Response(json.dumps({"Erro ao cadastrar":"Aguarde atualizações"}), status=400, mimetype="application/json")
 
 app.run(host='0.0.0.0', port=80, debug=True)
