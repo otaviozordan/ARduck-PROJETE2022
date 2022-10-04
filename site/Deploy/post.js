@@ -15,6 +15,7 @@ function fazPost(url, body) {
     request.onload = function() {
         console.log(this.responseText)
         document.getElementById("response").innerHTML = JSON.stringify((this.responseText), null, 4);
+        alert("Circuito cadastrado com sucesso!")
     }
 
     return request.responseText
