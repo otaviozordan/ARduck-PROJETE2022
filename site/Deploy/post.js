@@ -14,6 +14,7 @@ function fazPost(url, body) {
 
     request.onload = function() {
         console.log(this.responseText)
+        document.getElementById("response").innerHTML = JsonFormatting.Ident(this.responseText)
     }
 
     return request.responseText
