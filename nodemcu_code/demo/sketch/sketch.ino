@@ -1,7 +1,6 @@
 /**
    Scketch.ino - ESP8266 Sketch
    Author: Otávio Zordan < Github: @otaviozordan > < Linkedin: https://www.linkedin.com/in/otavio-zordan/ > < Instagram: @otaviozordan >
-   License: MIT
    Date: 2022-07-28
    Description:
         This sketch is intended to be used by Team 2106 at PROJETE 2022 held at ETE FMC.

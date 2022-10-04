@@ -1,3 +1,10 @@
+# main.py - backend API
+# Author: Otávio Zordan < Github: @otaviozordan > < Linkedin: https://www.linkedin.com/in/otavio-zordan/ > < Instagram: @otaviozordan >
+# date: 2022-07-01
+# version: 0.8 - Pre-Alpha
+# Objective: Create a backend API to store data and do calculations for a sistem ARduck to PROJETE 2022 - ETE FMC
+# Obs: This is a pre-alpha version, so it may have bugs and errors. This is only a test version, so it is not recommended to use it in production environments.
+
 from flask import Flask, Response, request
 import json
 
