@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="post.js"></script>
+            <form class="p-3 p-xl-4" onsubmit=cadastrarCircuito()>
+
+              <div class="mb-3">
+                <label class="form-label">Id do circuito:</label>
+                <input class="form-control" type="number" placeholder="Digite um numero"  id="id">
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Digite o tipo do circuito:</label>
+                <select class="form-select" id="type">
+                <optgroup label="Tipo">
+                  <option value="Série" selected="">Série</option>
+                  <option value="Paralelo" selected="">Paralelo</option>
+                </optgroup>
+              </select></div>
+
+              <div class="mb-3">
+                <label class="form-label">Digite a tensão da fonte:</label>
+                <input class="form-control" type="number" name="Tensão (vcc)" placeholder="Tensão (mV)"  id="Vtotal">
+              </div>
+
+              <div id="survey_options" class="mb-3">
+                <label class="form-label">Resistor 1:</label>
+                <input class="form-control" type="number" name="survey_options[]" placeholder="Valor(Ω)" id="R1">
+              </div>
+
+              <div id="survey_options-1" class="mb-3">
+                <label class="form-label">Resistor 2:</label>
+                <input class="form-control" type="number" name="survey_options[]" placeholder="Valor(Ω)" id="R2">
+              </div>
+
+              <div id="survey_options-2" class="mb-3">
+                <label class="form-label">Resistor 3:</label>
+                <input class="form-control" type="number" name="survey_options[]" placeholder="Valor(Ω)" id="R3">
+              </div>
+
+              <div id="survey_options-3" class="mb-3">
+                <label class="form-label">Resistor 4:</label>
+                <input class="form-control" type="number" name="survey_options[]" placeholder="Valor(Ω)" id="R4">
+              </div>
+
+              <div id="survey_options-4" class="mb-3">
+                <label class="form-label">Resistor 5:</label>
+                <input class="form-control" type="number" name="survey_options[]" placeholder="Valor(Ω)" id="R5">
+              </div>
+            
+              <div id="survey_options-4" class="mb-3">
+                <label class="form-label">Tolerancia dos Resistores:</label>
+                <input class="form-control" type="number" name="survey_options[]" placeholder="Valor(%)" id="tolerancia">
+              </div>
+ 
+              <button class="btn btn-primary shadow d-block w-100" type="submit">Enviar
+              </button>
+</body>
+</html>

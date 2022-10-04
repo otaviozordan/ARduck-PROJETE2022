@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-  <title>Contacts - Brand</title>
+  <title>Cadastrar circuitos</title>
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css?h=091d77c753a78fcc9a19ccf9cba34451">
   <link rel="stylesheet" href="assets/css/styles.min.css?h=c5ac4e5ea3a289610141c44f203e52fd">
 </head>
@@ -12,7 +12,7 @@
 <body style="/*background: url(&quot;design.jpg&quot;);*/background-position: 0 -60px;">
   <!-- Start: Navbar Centered Links -->
   <nav class="navbar navbar-dark navbar-expand-md sticky-top navbar-shrink py-3" id="mainNav">
-    <div class="container"><a class="navbar-brand d-flex align-items-center" href="/"><span
+    <div class="container"><a class="navbar-brand d-flex align-items-center" href="https://otaviozordan.github.io/ARduck-PROJETE2022/site"><span
           class="bs-icon-sm bs-icon-circle bs-icon-primary shadow d-flex justify-content-center align-items-center me-2 bs-icon"
           style="--bs-primary: #3763f4;--bs-primary-rgb: 55,99,244;--bs-secondary: #0aff99;--bs-secondary-rgb: 10,255,153;"><svg
             xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16"
@@ -23,7 +23,7 @@
             <path
               d="M14 3a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h12zM2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2z">
             </path>
-          </svg></span><span>ARduck</span></a><button data-bs-toggle="collapse" class="navbar-toggler"
+          </svg></span><span >ARduck</span></a><button href="data-bs-toggle="collapse" class="navbar-toggler"
         data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span
           class="navbar-toggler-icon"></span></button>
       <div class="collapse navbar-collapse" id="navcol-1">
@@ -35,7 +35,7 @@
           <li class="nav-item"></li>
           <li class="nav-item"></li>
           <li class="nav-item"></li>
-        </ul><a class="btn btn-primary shadow" role="button" href="signup.html">Voltar</a>
+        </ul><a class="btn btn-primary shadow" role="button" href="#">Medir Circuito Criado</a>
       </div>
     </div>
   </nav><!-- End: Navbar Centered Links -->
@@ -55,14 +55,19 @@
           <div>
 
             <script src="post.js"></script>
-            <form class="p-3 p-xl-4" onsubmit="cadastrarCircuito()">
+            <form class="p-3 p-xl-4" onsubmit=cadastrarCircuito()>
+
+              <div class="mb-3">
+                <label class="form-label">Id do circuito:</label>
+                <input class="form-control" type="number" placeholder="Digite um numero"  id="id">
+              </div>
 
               <div class="mb-3">
                 <label class="form-label">Digite o tipo do circuito:</label>
                 <select class="form-select" id="type">
                 <optgroup label="Tipo">
-                  <option value="Série" selected="">Série</option>
                   <option value="Paralelo" selected="">Paralelo</option>
+                  <option value="Serie" selected="">Serie</option>
                 </optgroup>
               </select></div>
 
@@ -116,11 +121,15 @@
       <div class="text-muted d-flex justify-content-between align-items-center pt-3">
         <p class="mb-0">ARduck</p>
       </div>
+      <p>Simulação do Circuito:</p>
+      <p id="response">Envie para ver</p>
     </div>
   </footer><!-- End: Footer Multi Column -->
+  <!--
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/script.min.js?h=2d5c83a0b230af4e0f7b277aff5d5fd7"></script>
+  -->
 </body>
 
 </html>

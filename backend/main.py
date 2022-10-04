@@ -6,9 +6,11 @@
 # Obs: This is a pre-alpha version, so it may have bugs and errors. This is only a test version, so it is not recommended to use it in production environments.
 
 from flask import Flask, Response, request
+#from flask_cors import CORS
 import json
 
 app = Flask(__name__)
+#CORS(app)
 
 #declara variavel para tensão medida
 global tensao
