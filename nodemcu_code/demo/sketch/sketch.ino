@@ -16,6 +16,10 @@
 #include "Requests.h"    //Funções de requisições
 #include "Imgs.h"        //Imagens
 
+bool press = false; //Variável para verificar se o botão foi pressionado
+int less_press = 0; //Variável para verificar se o botão foi pressionado por menos de 1 segundo
+int call = 1; //Variável para chamar as funções de menu
+
 void setup()
 {
   // Inicia Monitor Serial para Debug
@@ -42,7 +46,17 @@ void setup()
 void loop()
 {
   ArduinoOTA.handle();
-  if (!digitalRead(botao))
+
+    missao();
+
+    calibracao();
+
+    tensaoTempoReal();
+
+}
+
+void missao(){
+  while(true)
   {
     draw_verificandoEstado();
     state_test();
@@ -56,6 +70,7 @@ void loop()
       }
       if (!digitalRead(botao)) {
         draw_cancelar();
+        call = 1;
         delay(1000);
         break;
       }
@@ -67,6 +82,27 @@ void loop()
     draw_enviandoDados(httpStatus_Global);
     elementos_import(state_server);
     draw_elementosMedidos();
+    call = 1;
   }
   draw_espera();
+}
+
+void calibracao(){
+  draw_calibracao();
+  while (digitalRead(botao))
+  {
+    /* code */
+  }
+  tensao_referencia = analogRead(A0) * 3.3 / 1023;
+  draw_calibrado();
+  call = 1;
+}
+
+void tensaoTempoReal(){
+  while (digitalRead(botao))
+  {
+    medida = analogRead(A0) / 1023.0 * tensao_referencia;
+    tensao = map(medida, 0, tensao_referencia, 0, 5000);
+    draw_tensaoTempoReal();
+  }
 }

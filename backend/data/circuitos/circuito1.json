@@ -6,7 +6,7 @@
         },
         {
             "name": "Vtotal (Vcc)",
-            "value": 5000
+            "value": 6000
         },
         {
             "name": "Rtotal",
@@ -14,21 +14,23 @@
         },
         {
             "name": "Itotal",
-            "value": 2.5
+            "value": 3.0
         }
     ],
     "resistores": [
         {
+            "id": 1,
             "name": "R1",
             "value": 1000,
             "tolerance": 5,
-            "tensao": 2500.0
+            "tensao": 3000.0
         },
         {
+            "id": 2,
             "name": "R2",
             "value": 1000,
             "tolerance": 5,
-            "tensao": 2500.0
+            "tensao": 3000.0
         }
     ]
 }

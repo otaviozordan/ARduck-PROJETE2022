@@ -220,3 +220,49 @@ void draw_elementosMedidos(){
     delay(3000);
   }
 }
+
+void draw_calibracao(){
+  display.clear();
+  display.setTextAlignment(TEXT_ALIGN_CENTER);
+  display.setFont(ArialMT_Plain_16);
+  display.drawString(63, 7, "ARduck");
+  display.drawString(63, 26, "Calibrando");
+  display.drawString(63, 45, "Sensores");
+  display.display();
+  delay(3000);
+  display.clear();
+  display.setTextAlignment(TEXT_ALIGN_CENTER);
+  display.setFont(ArialMT_Plain_16);
+  display.drawString(63, 7, "ARduck");
+  display.drawString(63, 26, "Conecte Prob");
+  display.drawString(63, 45, "Ao 5V");
+  display.display();
+  delay(3000);
+  display.clear();
+  display.setTextAlignment(TEXT_ALIGN_CENTER);
+  display.setFont(ArialMT_Plain_16);
+  display.drawString(63, 26, "Precione botão");
+  display.drawString(63, 45, "Resetar referencia");
+  display.display();
+}
+
+void draw_calibrado(){
+  display.clear();
+  display.setTextAlignment(TEXT_ALIGN_CENTER);
+  display.setFont(ArialMT_Plain_16);
+  display.drawString(63, 7, "ARduck");
+  display.drawString(63, 26, "Adotado");
+  display.drawString(63, 45, String(tensao_referencia)+"mV");
+  display.display();
+  delay(3000);
+}
+
+void draw_tensaoTempoReal(){
+  display.clear();
+  display.setTextAlignment(TEXT_ALIGN_CENTER);
+  display.setFont(ArialMT_Plain_16);
+  display.drawString(63, 7, "Tensão em");
+  display.drawString(63, 26, "Tempo real");
+  display.drawString(63, 45, String(tensao)+"mV");
+  display.display();
+}

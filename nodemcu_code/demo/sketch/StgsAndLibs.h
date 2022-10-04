@@ -4,8 +4,12 @@
 #include <WiFiClientSecure.h> 
 
 //Dados do WiFi
-const char* ssid = "OTAVIO E OLAVO 2.4G";
-const char* password = "olavo1011";
+/*const char* ssid = "WLL-Inatel";
+const char* password = "inatelsemfio";
+*/
+
+const char* ssid = "TelecomOTA";
+const char* password = "DebugDuck";
 
 //Endereço IP
 String IP;
@@ -66,7 +70,7 @@ void OTA_Conection(){
   });
   ArduinoOTA.onProgress([](unsigned int progress, unsigned int total) {
     Serial.printf("Progress: %u%%\r", (progress / (total / 100)));
-    draw_OTA(progress, total);
+//    draw_OTA(progress, total);
   });
   ArduinoOTA.onError([](ota_error_t error) {
     Serial.printf("Error[%u]: ", error);
