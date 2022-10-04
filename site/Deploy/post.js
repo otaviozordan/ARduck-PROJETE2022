@@ -14,7 +14,7 @@ function fazPost(url, body) {
 
     request.onload = function() {
         console.log(this.responseText)
-        document.getElementById("response").innerHTML = JsonFormatting.Ident(this.responseText)
+        document.getElementById("response").innerHTML = JSON.stringify((this.responseText), null, 4);
     }
 
     return request.responseText
@@ -23,7 +23,6 @@ function fazPost(url, body) {
 function cadastrarCircuito() {
     event.preventDefault();
     let url = "https://arduckapi.otaviozordan.repl.co/circuito/" + document.getElementById("id").value
-    //let url = "http://192.168.0.105:80/circuito/" + document.getElementById("id").value
     let typeCircuit = document.getElementById("type").value
     let Vtotal = document.getElementById("Vtotal").value
     let R1 = document.getElementById("R1").value
