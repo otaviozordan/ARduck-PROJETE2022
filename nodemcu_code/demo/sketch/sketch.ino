@@ -41,17 +41,18 @@ void setup()
   OTA_Conection();
   draw_conectado(ssid);
   draw_ip(IP);
+
 }
 
 void loop()
 {
   ArduinoOTA.handle();
 
-    missao();
+  missao();
 
-    calibracao();
+  calibracao();
 
-    tensaoTempoReal();
+  tensaoTempoReal();
 
 }
 

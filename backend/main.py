@@ -194,6 +194,7 @@ def cadastrar_circuito(id):
   with open("backend\data\circuitos\circuito" + id + ".json", "w") as circuitoJsonArquivo: #cria um arquivo json com o nome do circuito
     circuitoJson = {} #cria um dicionario para o json de saida
     circuitoJson["dados do circuito"] = inputCircuito["dados do circuito"] #copia os dados do circuito para o json de saida
+    circuitoJson["dados do circuito"][1]["escala"] = "mV" #adiciona o valor da tensao total ao json de saida    
     circuitoJson["resistores"] = inputCircuito["resistores"] #copia os resistores para o json de saida
 
     circuitoJson["dados do circuito"].append({"name": "Rtotal"}) #adiciona a corrente total ao json de saida
@@ -203,15 +204,34 @@ def cadastrar_circuito(id):
         RtotalIndividual = inputCircuito["resistores"][i]["value"] #pega o valor de cada resistor
         Rtotal = Rtotal + RtotalIndividual #soma as resistencias individuais uma a uma
       circuitoJson["dados do circuito"][2]["value"] = Rtotal #adiciona o valor da resistencia total
+      circuitoJson["dados do circuito"][2]["escala"] = "Ohms" #adiciona o valor da tensao total ao json de saida
   
-    circuitoJson["dados do circuito"].append({"name": "Itotal"}) #adiciona a corrente total ao json de saida
-  
-    Itotal = inputCircuito["dados do circuito"][1]["value"] / Rtotal #calcula a corrente total importando a tensao e a resistencia total calculada
-    circuitoJson["dados do circuito"][3]["value"] = Itotal #adiciona o valor da corrente total ao json de saida
+      circuitoJson["dados do circuito"].append({"name": "Itotal"}) #adiciona a corrente total ao json de saida
+      Itotal = inputCircuito["dados do circuito"][1]["value"] / Rtotal #calcula a corrente total importando a tensao e a resistencia total calculada
+      circuitoJson["dados do circuito"][3]["value"] = Itotal #adiciona o valor da corrente total ao json de saida
+      circuitoJson["dados do circuito"][3]["escala"] = "mA" #adiciona o valor da tensao total ao json de saida
 
-    if(inputCircuito["dados do circuito"][0]["type"] == "Serie"):
       for i in range(0, len(inputCircuito["resistores"])):
         circuitoJson["resistores"][i]["tensao"] = inputCircuito["resistores"][i]["value"] * Itotal #calcula a tensao em cada resistor e adiciona ao json de saida
+        circuitoJson["resistores"][i]["corrente"] = Itotal #adiciona a corrente em cada resistor ao json de saida
+
+    if(inputCircuito["dados do circuito"][0]["type"] == "Paralelo"): #se o circuito for em paralelo
+      for i in range(0, len(inputCircuito["resistores"])):
+        RtotalIndividual = inputCircuito["resistores"][i]["value"]
+        Rtotal = Rtotal + (1/RtotalIndividual)
+      Rtotal = 1/Rtotal
+      circuitoJson["dados do circuito"][2]["value"] = Rtotal
+      circuitoJson["dados do circuito"][2]["escala"] = "Ohms" #adiciona o valor da tensao total ao json de saida
+  
+      for i in range(0, len(inputCircuito["resistores"])):
+        circuitoJson["resistores"][i]["tensao"] = inputCircuito["dados do circuito"][1]["value"] #adiciona a tensao em cada resistor ao json de saida
+        Itotalindivual = inputCircuito["dados do circuito"][1]["value"] / inputCircuito["resistores"][i]["value"] #calcula a corrente em cada resistor e adiciona ao json de saida
+        circuitoJson["resistores"][i]["corrente"] = Itotalindivual #calcula a corrente em cada resistor e adiciona ao json de saida
+        Itotal = Itotal + Itotalindivual #soma as correntes individuais uma a uma
+      circuitoJson["dados do circuito"].append({"name": "Itotal"})
+      circuitoJson["dados do circuito"][3]["value"] = Itotal #adiciona o valor da corrente total ao json de saida
+      circuitoJson["dados do circuito"][3]["escala"] = "mA" #adiciona o valor da tensao total ao json de saida
+
 
     json.dump(circuitoJson, circuitoJsonArquivo, indent=4)
 
