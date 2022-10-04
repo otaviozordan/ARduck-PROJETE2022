@@ -49,39 +49,39 @@ function cadastrarCircuito() {
             },
             {
                 "name": "Vtotal (Vcc)",
-                "value": Integer.parseInt(Vtotal)
+                "value": parseInt(Vtotal, 10)
             }
         ],
         "resistores": [
             {
                 "id": 1,
                 "name": "R1",
-                "value": Integer.parseInt(R1),
-                "tolerance": Integer.parseInt(tolerance)
+                "value": parseInt(R1, 10),
+                "tolerance": parseInt(tolerance, 10) 
             },
             {
                 "id": 2,
                 "name": "R2",
-                "value": Integer.parseInt(R2),
-                "tolerance": Integer.parseInt(tolerance)
+                "value": parseInt(R2, 10),
+                "tolerance": parseInt(tolerance, 10)
             },
             {
                 "id": 3,
                 "name": "R3",
-                "value": Integer.parseInt(R3),
-                "tolerance": Integer.parseInt(tolerance)
+                "value": parseInt(R3, 10),
+                "tolerance": parseInt(tolerance, 10)
             },
             {
                 "id": 4,
                 "name": "R4",
-                "value": Integer.parseInt(R4),
-                "tolerance": Integer.parseInt(tolerance)
+                "value": parseInt(R4, 10),
+                "tolerance": parseInt(tolerance, 10)
             },
             {
                 "id": 5,
                 "name": "R5",
-                "value": Integer.parseInt(R5),
-                "tolerance": Integer.parseInt(tolerance)
+                "value": parseInt(R5, 10),
+                "tolerance": parseInt(tolerance, 10)
             }
         ]
     }
