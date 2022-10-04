@@ -19,7 +19,7 @@ function fazPost(url, body) {
     return request.responseText
 }
 
-function cadastraUsuario() {
+function cadastrarCircuito() {
     preventDefault()
     let url = "https://arduckapi.otaviozordan.repl.co/circuito/" + document.getElementById("id").value
     let typeCircuit = document.getElementById("type").value
