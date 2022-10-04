@@ -6,11 +6,11 @@
 # Obs: This is a pre-alpha version, so it may have bugs and errors. This is only a test version, so it is not recommended to use it in production environments.
 
 from flask import Flask, Response, request
-#from flask_cors import CORS
+#from flask_cors import CORS, cross_origin
 import json
 
 app = Flask(__name__)
-#CORS(app)
+#cors = CORS(app)
 
 #declara variavel para tensão medida
 global tensao
@@ -128,7 +128,7 @@ def ler_tensao():
 
 @app.route("/templete", methods=["GET"])
 def templete_newCircuito():
-  response = open('backend\data\circuitos\\templete0.json')
+  response = open('data/circuitos/templete0.json')
   return Response(json.dumps(response), status=200, mimetype="application/json")
 
 @app.route("/circuito/<id>", methods=["GET"])
@@ -241,8 +241,10 @@ def cadastrar_circuito(id):
       circuitoJson["dados do circuito"][3]["value"] = Itotal #adiciona o valor da corrente total ao json de saida
       circuitoJson["dados do circuito"][3]["escala"] = "mA" #adiciona o valor da tensao total ao json de saida
 
+    with open("backend\data\circuitos\circuito5000.json", "w") as circuitoJsonFixo:
+      json.dump(circuitoJson, circuitoJsonFixo, indent=4) #escreve o json de saida no arquivo
 
-    json.dump(circuitoJson, circuitoJsonArquivo, indent=4)
+    json.dump(circuitoJson, circuitoJsonArquivo, indent=4) #salva o json de saida no arquivo criado
 
   try:
     return Response(json.dumps(circuitoJson), status=200, mimetype="application/json")

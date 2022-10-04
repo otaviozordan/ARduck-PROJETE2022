@@ -6,7 +6,7 @@
         },
         {
             "name": "Vtotal (Vcc)",
-            "value": 12000,
+            "value": 2000,
             "escala": "mV"
         },
         {
@@ -16,7 +16,7 @@
         },
         {
             "name": "Itotal",
-            "value": 2.4,
+            "value": 0.4,
             "escala": "mA"
         }
     ],
@@ -26,40 +26,40 @@
             "name": "R1",
             "value": 1000,
             "tolerance": 5,
-            "tensao": 2400.0,
-            "corrente": 2.4
+            "tensao": 400.0,
+            "corrente": 0.4
         },
         {
             "id": 2,
             "name": "R2",
             "value": 1000,
             "tolerance": 5,
-            "tensao": 2400.0,
-            "corrente": 2.4
+            "tensao": 400.0,
+            "corrente": 0.4
         },
         {
             "id": 3,
             "name": "R3",
             "value": 1000,
             "tolerance": 5,
-            "tensao": 2400.0,
-            "corrente": 2.4
+            "tensao": 400.0,
+            "corrente": 0.4
         },
         {
             "id": 4,
             "name": "R4",
             "value": 1000,
             "tolerance": 5,
-            "tensao": 2400.0,
-            "corrente": 2.4
+            "tensao": 400.0,
+            "corrente": 0.4
         },
         {
             "id": 5,
             "name": "R5",
             "value": 1000,
             "tolerance": 5,
-            "tensao": 2400.0,
-            "corrente": 2.4
+            "tensao": 400.0,
+            "corrente": 0.4
         }
     ]
 }
