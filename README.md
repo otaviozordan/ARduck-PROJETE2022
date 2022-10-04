@@ -2,7 +2,7 @@
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/otaviozordan/ARduck-PROJETE2022?style=for-the-badge)
 ![GitHub language count](https://img.shields.io/github/languages/count/otaviozordan/ARduck-PROJETE2022?style=for-the-badge)
-![GitHub commits](https://img.shields.io/github/commit-activity/m/otaviozordan/ARduck-PROJETE2022?style=for-the-badge)
+![GitHub commits](https://img.shields.io/github/commit-activity/y/otaviozordan/ARduck-PROJETE2022?style=for-the-badge)
 ![Bitbucket open issues](https://img.shields.io/github/contributors/otaviozordan/ARduck-PROJETE2022?color=green&style=for-the-badge)
 <img src="https://img.shields.io/github/issues-pr/otaviozordan/ARduck-PROJETE2022?style=for-the-badge"/>
 
