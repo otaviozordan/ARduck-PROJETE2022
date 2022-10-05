@@ -1,25 +1,26 @@
-//Pinos do NodeMCU
-// SDA (AZUL) => D1 (GPIO5)
-// SCL (VERDE) => D2 (GPIO4)
+// Pinos do NodeMCU
+//  SDA (AZUL) => D1 (GPIO5)
+//  SCL (VERDE) => D2 (GPIO4)
 
-//Bibliotecas para uso do OLED
+// Bibliotecas para uso do OLED
 #include <Wire.h>
 #include "SSD1306Wire.h"
 
-//Criação do objeto para o display OLED
-SSD1306Wire  display(0x3c, 5, 4);
+// Criação do objeto para o display OLED
+SSD1306Wire display(0x3c, 5, 4);
 
-void iniciarOLED(){
+void iniciarOLED()
+{
   display.init();
   display.flipScreenVertically();
 }
 
 void draw_telainicial()
 {
-  //Apaga o display
+  // Apaga o display
   display.clear();
   display.setTextAlignment(TEXT_ALIGN_CENTER);
-  //Seleciona a fonte
+  // Seleciona a fonte
   display.setFont(ArialMT_Plain_16);
   display.drawString(63, 7, "Projete 2022");
   display.drawString(63, 26, "ARduck");
@@ -30,10 +31,10 @@ void draw_telainicial()
 
 void draw_conectando(String ssid_stg)
 {
-  //Mostra que o ESP está conectando ao WiFi
+  // Mostra que o ESP está conectando ao WiFi
   display.clear();
   display.setTextAlignment(TEXT_ALIGN_CENTER);
-  //Seleciona a fonte
+  // Seleciona a fonte
   display.setFont(ArialMT_Plain_16);
   display.drawString(63, 7, "Conectando");
   display.drawString(63, 26, "a rede:");
@@ -43,11 +44,12 @@ void draw_conectando(String ssid_stg)
   delay(500);
 }
 
-void draw_conectado(String ssid_stg){
-  //Mostra que o ESP está conectado ao WiFi
+void draw_conectado(String ssid_stg)
+{
+  // Mostra que o ESP está conectado ao WiFi
   display.clear();
   display.setTextAlignment(TEXT_ALIGN_CENTER);
-  //Seleciona a fonte
+  // Seleciona a fonte
   display.setFont(ArialMT_Plain_16);
   display.drawString(63, 16, "Conectado");
   display.setFont(ArialMT_Plain_10);
@@ -57,18 +59,20 @@ void draw_conectado(String ssid_stg){
   display.clear();
 }
 
-void draw_ip(String ip_stg){
- display.clear();
- display.setTextAlignment(TEXT_ALIGN_CENTER);
- display.setFont(ArialMT_Plain_16);
- display.drawString(63, 7, "ARduck");
- display.drawString(63, 26, "Endereço IP:");
- display.drawString(63, 45, ip_stg);
- display.display();
- delay(3000);
+void draw_ip(String ip_stg)
+{
+  display.clear();
+  display.setTextAlignment(TEXT_ALIGN_CENTER);
+  display.setFont(ArialMT_Plain_16);
+  display.drawString(63, 7, "ARduck");
+  display.drawString(63, 26, "Endereço IP:");
+  display.drawString(63, 45, ip_stg);
+  display.display();
+  delay(3000);
 }
 
-void draw_espera(){
+void draw_espera()
+{
   display.clear();
   display.setTextAlignment(TEXT_ALIGN_CENTER);
   display.setFont(ArialMT_Plain_16);
@@ -79,7 +83,8 @@ void draw_espera(){
   display.display();
 }
 
-void draw_verificandoEstado(){
+void draw_verificandoEstado()
+{
   display.clear();
   display.setTextAlignment(TEXT_ALIGN_CENTER);
   display.setFont(ArialMT_Plain_16);
@@ -91,16 +96,18 @@ void draw_verificandoEstado(){
   delay(1000);
 }
 
-void draw_response(int status, int httpCode){
+void draw_response(int status, int httpCode)
+{
   display.clear();
   display.setTextAlignment(TEXT_ALIGN_CENTER);
   display.setFont(ArialMT_Plain_16);
   display.drawString(63, 7, "ARduck");
-  display.drawString(63, 26, String(status)== "0" ? "Cicuito não" : "Circuito: " + String(status));
-  display.drawString(63, 45,  "Está ativo");
+  display.drawString(63, 26, String(status) == "0" ? "Cicuito não" : "Circuito: " + String(status));
+  display.drawString(63, 45, "Está ativo");
   display.display();
   delay(3000);
-  if(httpCode != 200){
+  if (httpCode != 200)
+  {
     display.clear();
     display.setTextAlignment(TEXT_ALIGN_CENTER);
     display.setFont(ArialMT_Plain_16);
@@ -112,7 +119,8 @@ void draw_response(int status, int httpCode){
   }
 }
 
-void draw_medindoTensao(){
+void draw_medindoTensao()
+{
   display.clear();
   display.setTextAlignment(TEXT_ALIGN_CENTER);
   display.setFont(ArialMT_Plain_16);
@@ -123,7 +131,8 @@ void draw_medindoTensao(){
   delay(2500);
 }
 
-void draw_tensao(int tensao){
+void draw_tensao(int tensao)
+{
   display.clear();
   display.setTextAlignment(TEXT_ALIGN_CENTER);
   display.setFont(ArialMT_Plain_16);
@@ -135,7 +144,8 @@ void draw_tensao(int tensao){
   delay(5000);
 }
 
-void draw_enviandoDados(int httpcode){
+void draw_enviandoDados(int httpcode)
+{
   display.clear();
   display.setTextAlignment(TEXT_ALIGN_CENTER);
   display.setFont(ArialMT_Plain_16);
@@ -146,7 +156,8 @@ void draw_enviandoDados(int httpcode){
   delay(2000);
   display.clear();
 
-  if (httpcode == 200){
+  if (httpcode == 200)
+  {
     display.setTextAlignment(TEXT_ALIGN_CENTER);
     display.setFont(ArialMT_Plain_16);
     display.drawString(63, 7, "Dados enviados");
@@ -156,7 +167,8 @@ void draw_enviandoDados(int httpcode){
     delay(3000);
     display.clear();
   }
-  else{
+  else
+  {
     display.setTextAlignment(TEXT_ALIGN_CENTER);
     display.setFont(ArialMT_Plain_16);
     display.drawString(63, 7, "ARduck");
@@ -174,7 +186,8 @@ void draw_enviandoDados(int httpcode){
   }
 }
 
-void draw_cancelar(){
+void draw_cancelar()
+{
   display.clear();
   display.setTextAlignment(TEXT_ALIGN_CENTER);
   display.setFont(ArialMT_Plain_16);
@@ -185,7 +198,8 @@ void draw_cancelar(){
   delay(1000);
 }
 
-void draw_OTA(int progresso, int total){
+void draw_OTA(int progresso, int total)
+{
   display.clear();
   display.setTextAlignment(TEXT_ALIGN_CENTER);
   display.setFont(ArialMT_Plain_16);
@@ -195,7 +209,8 @@ void draw_OTA(int progresso, int total){
   display.display();
 }
 
-void draw_statusOff(){
+void draw_statusOff()
+{
   Serial.println("Servidor indisponível");
   Serial.println("Inicializando modo de espera, inicialize modo de medicao para continuar");
   Serial.println("");
@@ -209,7 +224,8 @@ void draw_statusOff(){
   delay(3000);
 }
 
-void draw_elementosMedidos(){
+void draw_elementosMedidos()
+{
   for (int i = 0; i < size; i++)
   {
     display.clear();
@@ -221,7 +237,8 @@ void draw_elementosMedidos(){
   }
 }
 
-void draw_calibracao(){
+void draw_calibracao()
+{
   display.clear();
   display.setTextAlignment(TEXT_ALIGN_CENTER);
   display.setFont(ArialMT_Plain_16);
@@ -241,28 +258,46 @@ void draw_calibracao(){
   display.clear();
   display.setTextAlignment(TEXT_ALIGN_CENTER);
   display.setFont(ArialMT_Plain_16);
+  display.drawString(63, 7, "Pronto?");
   display.drawString(63, 26, "Precione botão");
-  display.drawString(63, 45, "Resetar referencia");
+  display.drawString(63, 45, "Mudar referencia");
   display.display();
 }
 
-void draw_calibrado(){
+void draw_calibrado(int referencia)
+{
   display.clear();
   display.setTextAlignment(TEXT_ALIGN_CENTER);
   display.setFont(ArialMT_Plain_16);
   display.drawString(63, 7, "ARduck");
   display.drawString(63, 26, "Adotado");
-  display.drawString(63, 45, String(tensao_referencia)+"mV");
+  display.drawString(63, 45, String(referencia) + "mV");
   display.display();
   delay(3000);
 }
 
-void draw_tensaoTempoReal(){
-  display.clear();
-  display.setTextAlignment(TEXT_ALIGN_CENTER);
-  display.setFont(ArialMT_Plain_16);
-  display.drawString(63, 7, "Tensão em");
-  display.drawString(63, 26, "Tempo real");
-  display.drawString(63, 45, String(tensao)+"mV");
-  display.display();
+void draw_contagem()
+{
+  int tempo = 10;
+  while (tempo > 0)
+  {
+    display.clear();
+    display.setTextAlignment(TEXT_ALIGN_CENTER);
+    display.setFont(ArialMT_Plain_16);
+    display.drawString(63, 7, "Para calibrar");
+    display.drawString(63, 26, "Pressione");
+    display.drawString(63, 45, String(tempo));
+    display.display();
+    tempo--;
+    delay(1000);
+    display.clear();
+    display.setTextAlignment(TEXT_ALIGN_CENTER);
+    display.setFont(ArialMT_Plain_16);
+    display.drawString(63, 7, "Ou aguarde");
+    display.drawString(63, 26, "Para medir");
+    display.drawString(63, 45, String(tempo));
+    display.display();
+    delay(1000);
+    tempo--;
+  }
 }

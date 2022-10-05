@@ -17,9 +17,6 @@ int state_server; //Variavel do numero do circuito
 char* elementosList; //Array de elementos
 int size; //Tamanho do array de elementos
 
-//Constantes de medição
-int tensao_referencia = 2419; //Tensão de referência para conversão do valor lido pelo ADC maxima.
-
 //Tensao de saida
 int tensao, medida;
 
@@ -62,14 +59,14 @@ void state_test()
     }
 }
 
-void tensao_send()
+void tensao_send(int referencia)
 {
     Serial.println("");
     Serial.println("Enviando requisição para: " + SEND_DATA_route); // Exibe rota de envio de dados
 
     // Prepara payload para envio
-    medida = analogRead(A0) / 1023.0 * tensao_referencia;
-    tensao = map(medida, 0, tensao_referencia, 0, 5000);
+    medida = analogRead(A0) / 1023.0 * referencia;
+    tensao = map(medida, 0, referencia, 0, 5000);
     String JSON;
     JSON = "{\"tensao\":";
     JSON += tensao;
