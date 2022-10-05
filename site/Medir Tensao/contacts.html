@@ -53,11 +53,14 @@
                 </div>
             </div>
             <div>
-                <label class="form-label" style="margin-left: 300px;">ID:</label>
-                <input class="form-control-sm" type="text" name="survey_options[]" placeholder="ID do seu circuito" style="margin-left: 10px;background: rgb(255,255,255);">
-                <button class="btn btn-primary" type="button"style="margin-bottom: 20px;margin-left: 20px;margin-right: 20px;">
-                    Enviar
-                </button>
+                <script src="get.js"></script>
+                <form onsubmit=get()>
+                    <label class="form-label" style="margin-left: 300px;">ID:</label>
+                    <input class="form-control-sm" type="text" name="survey_options[]" placeholder="ID do seu circuito" style="margin-left: 10px;background: rgb(255,255,255);" id="id">
+                    <button class="btn btn-primary" type="submit"style="margin-bottom: 20px;margin-left: 20px;margin-right: 20px;">
+                        Enviar
+                    </button>
+                </form>
             </div>
             <div class="row d-flex justify-content-center">
                 <div class="col-md-6 col-xl-4" style="width: 600px;">

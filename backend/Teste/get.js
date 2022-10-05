@@ -1,14 +1,13 @@
+function fazGet(url) {
+    let request = new XMLHttpRequest()
+    request.open("GET", url, false)
+    request.send()
+    return request.responseText
+}
+
 function get(){
     event.preventDefault();
     let url = "https://arduckapi.otaviozordan.repl.co/circuito/" + document.getElementById("id").value
-    let request = new XMLHttpRequest()
-
-    request.open("GET", url, false)
-    request.send(null)
-    request.onload = function() {
-        console.log(this.responseText)
-        document.getElementById("text").innerHTML = request.responseText;
-    }
-
-    return request.responseText
+    let data = fazGet(url)
+    console.log(data)
 }
