@@ -14,7 +14,7 @@ function fazPost(url, body) {
 
     request.onload = function() {
         console.log(this.responseText)
-        document.getElementById("response").innerHTML = JSON.stringify((this.responseText), null, 4);
+        document.getElementById("response").innerHTML = JSON.stringify(JSON.parse(this.responseText, undefined, 4));
         alert("Circuito cadastrado com sucesso!")
     }
 
@@ -33,14 +33,39 @@ function cadastrarCircuito() {
     let R5 = document.getElementById("R5").value
     let tolerance = document.getElementById("tolerancia").value
 
+    console.log("Id:")
     console.log(id)
+    console.log("Tipo:")
     console.log(typeCircuit)
+    console.log("Tensão fonte:")
     console.log(Vtotal)
+    console.log("Resistores:")
     console.log(R1)
     console.log(R2)
     console.log(R3)
     console.log(R4)
     console.log(R5)
+
+    if(document.getElementById("id").value == 1){
+        alert("Circuito Especial! Este é um id destinado a Demo-PROJETE 2022 onde se mede a tensão em referencia ao GND!")
+        if((document.getElementById("R3") != 0)||document.getElementById("R3") != 0){
+            alert("Este circuito somente comporta 3 resistores")
+            R4 = 0
+            R5 = 0
+            console.log("Id:")
+            console.log(id)
+            console.log("Tipo:")
+            console.log(typeCircuit)
+            console.log("Tensão fonte:")
+            console.log(Vtotal)
+            console.log("Resistores:")
+            console.log(R1)
+            console.log(R2)
+            console.log(R3)
+            console.log(R4)
+            console.log(R5)
+        }
+    }
 
     body = {
         "dados do circuito": [
@@ -76,16 +101,32 @@ function cadastrarCircuito() {
                 "id": 4,
                 "name": "R4",
                 "value": parseInt(R4, 10),
-                "tolerance": parseInt(tolerance, 10)
+                "tolerance": parseInt(tolerance, 10),
+                "tensao":0
             },
             {
                 "id": 5,
                 "name": "R5",
                 "value": parseInt(R5, 10),
-                "tolerance": parseInt(tolerance, 10)
+                "tolerance": parseInt(tolerance, 10),
+                "tensao":0
             }
         ]
     }
 
     fazPost(url, body)
+    get();
+}
+
+function fazGet(url) {
+    let request = new XMLHttpRequest()
+    request.open("GET", url, false)
+    request.send()
+    return request.responseText
+}
+
+function get(){
+    let url = "https://arduckapi.otaviozordan.repl.co/start/" + document.getElementById("id").value
+    let data = fazGet(url)
+    console.log("Start: ", data["circuito"])
 }

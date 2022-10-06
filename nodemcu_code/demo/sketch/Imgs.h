@@ -76,10 +76,12 @@ void draw_espera()
   display.clear();
   display.setTextAlignment(TEXT_ALIGN_CENTER);
   display.setFont(ArialMT_Plain_16);
-  display.drawString(63, 7, "ARduck");
-  display.drawString(63, 26, "Inicie o desafio e");
+  int tensao_t = (analogRead(A0)/1023)*3300;
+  display.drawString(63, 7, "Inicie o desafio e");
   display.setFont(ArialMT_Plain_10);
-  display.drawString(63, 45, "aperte o botão para medir");
+  display.drawString(63, 26, "aperte o botão para medir");
+  display.setFont(ArialMT_Plain_16);
+  display.drawString(63, 45, String(tensao_t)+"mV");
   display.display();
 }
 
@@ -131,20 +133,20 @@ void draw_medindoTensao()
   delay(2500);
 }
 
-void draw_tensao(int tensao)
+void draw_tensao(int tensao_t)
 {
   display.clear();
   display.setTextAlignment(TEXT_ALIGN_CENTER);
   display.setFont(ArialMT_Plain_16);
   display.drawString(63, 7, "ARduck");
   display.drawString(63, 26, "Tensão medida:");
-  String tensao_str = String(tensao) + "mV";
+  String tensao_str = String(tensao_t) + "mV";
   display.drawString(63, 45, tensao_str);
   display.display();
   delay(5000);
 }
 
-void draw_enviandoDados(int httpcode)
+void draw_enviandoDados(int httpcode, int tensao_t)
 {
   display.clear();
   display.setTextAlignment(TEXT_ALIGN_CENTER);
@@ -162,7 +164,7 @@ void draw_enviandoDados(int httpcode)
     display.setFont(ArialMT_Plain_16);
     display.drawString(63, 7, "Dados enviados");
     display.drawString(63, 26, "com sucesso");
-    display.drawString(63, 45, String(tensao) + "mV");
+    display.drawString(63, 45, String(tensao_t) + "mV");
     display.display();
     delay(3000);
     display.clear();
@@ -278,6 +280,7 @@ void draw_calibrado(int referencia)
 
 void draw_contagem()
 {
+  /*
   int tempo = 10;
   while (tempo > 0)
   {
@@ -300,4 +303,12 @@ void draw_contagem()
     delay(1000);
     tempo--;
   }
+  */
+    display.clear();
+    display.setTextAlignment(TEXT_ALIGN_CENTER);
+    display.setFont(ArialMT_Plain_16);
+    display.drawString(63, 7, "Para calibrar");
+    display.drawString(63, 26, "Pressione");
+    display.drawString(63, 45, String(analogRead(A0)));
+    display.display();
 }

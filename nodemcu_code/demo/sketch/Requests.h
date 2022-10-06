@@ -3,6 +3,7 @@ String URL = "https://arduckapi.otaviozordan.repl.co";
 String SEND_DATA_route = URL+"/tensao"; //Rota para envio de dados de tensao
 String STATE_route = URL+"/state"; //Rota para recebimento de dados de estado
 String GET_ELEMENT_route = URL+"/circuito"; //Rota para recebimento de dados de estado
+String STOP_route = URL+"/stop";
 
 //Cliente HTTP e WiFi
 const char* fingerpr = "04 02 35 B9 C0 0E E5 F2 AE 94 93 3C 8D 44 4C 5B C8 E7 61 69";
@@ -16,9 +17,6 @@ int httpStatus_Global;  //Variavel de status de resposta do servidor
 int state_server; //Variavel do numero do circuito
 char* elementosList; //Array de elementos
 int size; //Tamanho do array de elementos
-
-//Tensao de saida
-int tensao, medida;
 
 void state_test()
 {
@@ -59,17 +57,13 @@ void state_test()
     }
 }
 
-void tensao_send(int referencia)
+void tensao_send(int tensao_t)
 {
     Serial.println("");
     Serial.println("Enviando requisição para: " + SEND_DATA_route); // Exibe rota de envio de dados
-
-    // Prepara payload para envio
-    medida = analogRead(A0) / 1023.0 * referencia;
-    tensao = map(medida, 0, referencia, 0, 5000);
     String JSON;
     JSON = "{\"tensao\":";
-    JSON += tensao;
+    JSON += tensao_t;
     JSON += ",\"escala\": ";
     JSON += "\"mV\"}";
     Serial.println(JSON);
@@ -95,6 +89,12 @@ void tensao_send(int referencia)
         Serial.println("*----------------------------------*"); // Pula linha
         Serial.println("");
         http.end(); // Encerra requisição HTTP
+        
+        client.setFingerprint(fingerpr);
+        http.begin(client, STOP_route);                    // Inicia requisição HTTP
+        http.addHeader("Content-Type", "application/json"); // Adiciona cabeçalho
+        int httpCode = http.GET();
+        http.end(); // Encerra requisição HTTP// Envia requisição GET
     }
     else
     {

@@ -15,13 +15,15 @@
 #include "Imgs.h"        //Imagens
 
 //Constantes de medição
-int tensao_referencia = 2419; //Tensão de referência para conversão do valor lido pelo ADC maxima.
+int tensao = 2419; //Tensão de referência para conversão do valor lido pelo ADC maxima.
 
 bool press = false; //Variável para verificar se o botão foi pressionado
 int less_press = 0; //Variável para verificar se o botão foi pressionado por menos de 1 segundo
 
 void setup()
 {
+  pinMode(A0, INPUT);
+  
   // Inicia Monitor Serial para Debug
   Serial.begin(115200);
 
@@ -46,17 +48,7 @@ void setup()
 void loop()
 {
   ArduinoOTA.handle();
-  draw_contagem();
-
   if(!digitalRead(botao)){
-    missao();
-  }
-  else{
-    calibracao();
-  }
-}
-
-void missao(){
     draw_verificandoEstado();
     state_test();
     while (state_server == 0) //Espera inicio da missão
@@ -76,21 +68,13 @@ void missao(){
     }
     draw_response(state_server, httpStatus_Global);
     draw_medindoTensao();
-    tensao_send(tensao_referencia);
+    tensao = (analogRead(A0)/1023)*3300;
+    tensao_send(tensao);
     draw_tensao(tensao); 
-    draw_enviandoDados(httpStatus_Global);
+    draw_enviandoDados(httpStatus_Global, tensao);
     elementos_import(state_server);
     draw_elementosMedidos();
-  //draw_espera();
-}
-
-void calibracao(){
-  draw_calibracao();
-  while (digitalRead(botao))
-  { 
-    delay(50);
-    ArduinoOTA.handle();
+  }else{
+    draw_espera();
   }
-  tensao_referencia = analogRead(A0) * 3.3 / 1023;
-  draw_calibrado(tensao_referencia);
 }

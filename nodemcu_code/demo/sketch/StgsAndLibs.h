@@ -7,14 +7,14 @@
 /*const char* ssid = "ARduck - PROJETE 2022";
 const char* password = "DebugDuck";
 */
-
+/*
 const char* ssid = "TelecomOTA";
 const char* password = "DebugDuck";
+*/
 
-/*
 const char* ssid = "TP-Link_52EB";
 const char* password = "15712981";
-*/
+
 /* Firewall Ativado
 const char* ssid = "ETE-ALUNOS";
 const char* password = "etefmc890";
