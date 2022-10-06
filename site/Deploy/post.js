@@ -16,6 +16,7 @@ function fazPost(url, body) {
         console.log(this.responseText)
         document.getElementById("response").innerHTML = JSON.stringify(JSON.parse(this.responseText, undefined, 4));
         alert("Circuito cadastrado com sucesso!")
+        alert(JSON.stringify(JSON.parse(this.responseText, undefined, 4)))
     }
 
     return request.responseText
@@ -50,6 +51,7 @@ function cadastrarCircuito() {
         alert("Circuito Especial! Este é um id destinado a Demo-PROJETE 2022 onde se mede a tensão em referencia ao GND!")
         if((document.getElementById("R3") != 0)||document.getElementById("R3") != 0){
             alert("Este circuito somente comporta 3 resistores")
+
             R4 = 0
             R5 = 0
             console.log("Id:")

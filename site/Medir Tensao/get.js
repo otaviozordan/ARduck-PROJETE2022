@@ -11,4 +11,5 @@ function get(){
     let data = fazGet(url)
     console.log(data)
     document.getElementById("demo").innerHTML = JSON.stringify((data), null, 4);
+    alert(JSON.stringify(JSON.parse(data, null, 4)))
 }
