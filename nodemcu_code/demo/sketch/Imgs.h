@@ -71,12 +71,11 @@ void draw_ip(String ip_stg)
   delay(3000);
 }
 
-void draw_espera()
+void draw_espera(float tensao_t)
 {
   display.clear();
   display.setTextAlignment(TEXT_ALIGN_CENTER);
   display.setFont(ArialMT_Plain_16);
-  int tensao_t = (analogRead(A0)/1023)*3300;
   display.drawString(63, 7, "Inicie o desafio e");
   display.setFont(ArialMT_Plain_10);
   display.drawString(63, 26, "aperte o botão para medir");
@@ -133,7 +132,7 @@ void draw_medindoTensao()
   delay(2500);
 }
 
-void draw_tensao(int tensao_t)
+void draw_tensao(float tensao_t)
 {
   display.clear();
   display.setTextAlignment(TEXT_ALIGN_CENTER);
@@ -146,7 +145,7 @@ void draw_tensao(int tensao_t)
   delay(5000);
 }
 
-void draw_enviandoDados(int httpcode, int tensao_t)
+void draw_enviandoDados(int httpcode, float tensao_t)
 {
   display.clear();
   display.setTextAlignment(TEXT_ALIGN_CENTER);
@@ -237,78 +236,4 @@ void draw_elementosMedidos()
     display.display();
     delay(3000);
   }
-}
-
-void draw_calibracao()
-{
-  display.clear();
-  display.setTextAlignment(TEXT_ALIGN_CENTER);
-  display.setFont(ArialMT_Plain_16);
-  display.drawString(63, 7, "ARduck");
-  display.drawString(63, 26, "Calibrando");
-  display.drawString(63, 45, "Sensores");
-  display.display();
-  delay(3000);
-  display.clear();
-  display.setTextAlignment(TEXT_ALIGN_CENTER);
-  display.setFont(ArialMT_Plain_16);
-  display.drawString(63, 7, "ARduck");
-  display.drawString(63, 26, "Conecte Prob");
-  display.drawString(63, 45, "Ao 5V");
-  display.display();
-  delay(3000);
-  display.clear();
-  display.setTextAlignment(TEXT_ALIGN_CENTER);
-  display.setFont(ArialMT_Plain_16);
-  display.drawString(63, 7, "Pronto?");
-  display.drawString(63, 26, "Precione botão");
-  display.drawString(63, 45, "Mudar referencia");
-  display.display();
-}
-
-void draw_calibrado(int referencia)
-{
-  display.clear();
-  display.setTextAlignment(TEXT_ALIGN_CENTER);
-  display.setFont(ArialMT_Plain_16);
-  display.drawString(63, 7, "ARduck");
-  display.drawString(63, 26, "Adotado");
-  display.drawString(63, 45, String(referencia) + "mV");
-  display.display();
-  delay(3000);
-}
-
-void draw_contagem()
-{
-  /*
-  int tempo = 10;
-  while (tempo > 0)
-  {
-    display.clear();
-    display.setTextAlignment(TEXT_ALIGN_CENTER);
-    display.setFont(ArialMT_Plain_16);
-    display.drawString(63, 7, "Para calibrar");
-    display.drawString(63, 26, "Pressione");
-    display.drawString(63, 45, String(tempo));
-    display.display();
-    tempo--;
-    delay(1000);
-    display.clear();
-    display.setTextAlignment(TEXT_ALIGN_CENTER);
-    display.setFont(ArialMT_Plain_16);
-    display.drawString(63, 7, "Ou aguarde");
-    display.drawString(63, 26, "Para medir");
-    display.drawString(63, 45, String(tempo));
-    display.display();
-    delay(1000);
-    tempo--;
-  }
-  */
-    display.clear();
-    display.setTextAlignment(TEXT_ALIGN_CENTER);
-    display.setFont(ArialMT_Plain_16);
-    display.drawString(63, 7, "Para calibrar");
-    display.drawString(63, 26, "Pressione");
-    display.drawString(63, 45, String(analogRead(A0)));
-    display.display();
 }

@@ -57,7 +57,7 @@ void state_test()
     }
 }
 
-void tensao_send(int tensao_t)
+void tensao_send(float tensao_t)
 {
     Serial.println("");
     Serial.println("Enviando requisição para: " + SEND_DATA_route); // Exibe rota de envio de dados

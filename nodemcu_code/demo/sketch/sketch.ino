@@ -15,10 +15,7 @@
 #include "Imgs.h"        //Imagens
 
 //Constantes de medição
-int tensao = 2419; //Tensão de referência para conversão do valor lido pelo ADC maxima.
-
-bool press = false; //Variável para verificar se o botão foi pressionado
-int less_press = 0; //Variável para verificar se o botão foi pressionado por menos de 1 segundo
+float tensao = 2419; //Tensão de referência para conversão do valor lido pelo ADC maxima.
 
 void setup()
 {
@@ -68,13 +65,16 @@ void loop()
     }
     draw_response(state_server, httpStatus_Global);
     draw_medindoTensao();
-    tensao = (analogRead(A0)/1023)*3300;
+    tensao = analogRead(A0);
+    tensao = (tensao/1023)*3300;
     tensao_send(tensao);
     draw_tensao(tensao); 
     draw_enviandoDados(httpStatus_Global, tensao);
     elementos_import(state_server);
     draw_elementosMedidos();
   }else{
-    draw_espera();
+    tensao = analogRead(A0);
+    tensao = (tensao/1023)*3300;
+    draw_espera(tensao);
   }
 }
