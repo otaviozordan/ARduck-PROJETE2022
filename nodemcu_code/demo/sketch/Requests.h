@@ -90,11 +90,12 @@ void tensao_send(float tensao_t)
         Serial.println("");
         http.end(); // Encerra requisição HTTP
         
-        client.setFingerprint(fingerpr);
+        /*client.setFingerprint(fingerpr);
         http.begin(client, STOP_route);                    // Inicia requisição HTTP
         http.addHeader("Content-Type", "application/json"); // Adiciona cabeçalho
         int httpCode = http.GET();
         http.end(); // Encerra requisição HTTP// Envia requisição GET
+        */
     }
     else
     {
@@ -107,12 +108,13 @@ void tensao_send(float tensao_t)
 
 void elementos_import(int circuito)
 {   
-    GET_ELEMENT_route = GET_ELEMENT_route + "/" + String(circuito);
+    String GET_ELEMENT_route_id;
+    GET_ELEMENT_route_id = GET_ELEMENT_route + "/" + String(circuito);
     Serial.println("Enviando requisição para: " + GET_ELEMENT_route);
     Serial.println("Verificando estado do servidor...");
 
     client.setFingerprint(fingerpr);
-    http.begin(client, GET_ELEMENT_route);                    // Inicia requisição HTTP
+    http.begin(client, GET_ELEMENT_route_id);                    // Inicia requisição HTTP
     http.addHeader("Content-Type", "application/json"); // Adiciona cabeçalho
     int httpCode = http.GET();                          // Envia requisição GET
     httpStatus_Global = httpCode;                       // Salva o status da requisição

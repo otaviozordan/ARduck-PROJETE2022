@@ -106,7 +106,7 @@ void draw_response(int status, int httpCode)
   display.drawString(63, 26, String(status) == "0" ? "Cicuito não" : "Circuito: " + String(status));
   display.drawString(63, 45, "Está ativo");
   display.display();
-  delay(3000);
+  delay(1000);
   if (httpCode != 200)
   {
     display.clear();
@@ -129,7 +129,7 @@ void draw_medindoTensao()
   display.drawString(63, 26, "Medindo tensão");
   display.drawString(63, 45, "do circuito");
   display.display();
-  delay(2500);
+  delay(1000);
 }
 
 void draw_tensao(float tensao_t)
@@ -142,7 +142,7 @@ void draw_tensao(float tensao_t)
   String tensao_str = String(tensao_t) + "mV";
   display.drawString(63, 45, tensao_str);
   display.display();
-  delay(5000);
+  delay(3000);
 }
 
 void draw_enviandoDados(int httpcode, float tensao_t)
@@ -154,7 +154,7 @@ void draw_enviandoDados(int httpcode, float tensao_t)
   display.drawString(63, 26, "Enviando dados");
   display.drawString(63, 45, "ao app");
   display.display();
-  delay(2000);
+  delay(1000);
   display.clear();
 
   if (httpcode == 200)
